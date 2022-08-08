@@ -1,10 +1,14 @@
 var personagem;
 var obstaculos = [];
 var pontuacao;
+var fundo;
 
 function startGame() {
     
-    personagem = new component(30, 30, "red", 10, 120);
+    //personagem = new component(30, 30, "red", 10, 120);
+    
+    fundo = new component(656, 270, "pista.png", 0, 0, "image");
+    personagem = new component(30, 30, "car.png", 10, 120, "image");
     pontuacao = new component("30px", "Consolas", "black", 280, 40, "text")
     //obstaculo = new component(10, 200, "green", 300, 120);
     areaDoJogo.start();
@@ -40,7 +44,12 @@ var areaDoJogo = {
 
 }
 
-function component( width, height, color, x, y) {
+function component( width, height, color, x, y, type) {
+    this.type = type;
+    if (type == "image" || type == "background") {
+        this.image = new Image();
+        this.image.src = color;
+    }
     this.width = width;
     this.height = height;
     this.velocidadeX = 0;
@@ -50,8 +59,16 @@ function component( width, height, color, x, y) {
 
     this.update = function(){
         ctx = areaDoJogo.context;
-        ctx.fillStyle = color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        if (this.type == "text") {
+            ctx.font = this.width + " " + this.height;
+            ctx.fillStyle = color;
+            ctx.fillText(this.text, this.x, this.y);
+        } else if (type == "image") {
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        } else {
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
     }
 
     this.newPos = function() {
@@ -92,7 +109,7 @@ function atualizaAreaDoJogo() {
     personagem.velocidadeX = 0;
     personagem.velocidadeY = 0;
 
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft']  ) {personagem.velocidadeX = -1; }
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft']  ) {personagem.velocidadeX = -1; personagem.image.src = "car2.png" }
     if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] ) {personagem.velocidadeX = 1; }
     if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    ) {personagem.velocidadeY = -1; }
     if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  ) {personagem.velocidadeY = 1;}
@@ -115,6 +132,12 @@ function atualizaAreaDoJogo() {
       obstaculos[i].x += -1;
       obstaculos[i].update();
     }
+
+    pontuacao.text = "Pontos: " + areaDoJogo.frameNo;
+    pontuacao.update();
+    fundo.velocidadeX = -1;
+    fundo.newPos();
+    fundo.update();
     personagem.newPos();
     personagem.update();
 /*
