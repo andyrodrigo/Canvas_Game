@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Game</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;">
+        Your browser does not support the canvas element.
+    </canvas>
+
+    <p>Image to use:</p>
+
+    <img id="scream" width="220" height="277"
+    src="pic_the_scream.jpg" alt="The Scream">
+
+    <p>Canvas:</p>
+
+    <canvas id="myCanvas2" width="240" height="297"
+    style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <script>
+        window.onload = function() {
+            var canvas2 = document.getElementById("myCanvas2");
+            var ctx = canvas2.getContext("2d");
+            var img = document.getElementById("scream");
+            ctx.drawImage(img, 10, 10);
+        };
+    </script>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#FF0000";
+        ctx.fillRect(50, 100, 150, 75);
+
+        var ctx2 = canvas.getContext("2d");
+        ctx2.moveTo(200,200);
+        ctx2.lineTo(300,300);
+        ctx2.stroke();
+
+        var ctx3 = canvas.getContext("2d");
+        ctx3.beginPath();
+        ctx3.arc(400, 100, 50, 0, 2 * Math.PI); // x,y,raio,anguloInicial, anguloFinal
+        ctx3.stroke();
+
+        // Create gradient
+        var grd = ctx.createLinearGradient(0, 0, 200, 0);
+        grd.addColorStop(0, "red");
+        grd.addColorStop(1, "white");
+
+        // Fill with gradient
+        ctx.fillStyle = grd;
+        ctx.fillRect(0, 0, 200, 80);
+    </script>
+    
+</body>
+</html>
