@@ -1,10 +1,13 @@
 var personagem;
-var obstaculo;
+var obstaculos = [];
+var pontuacao;
 
 function startGame() {
+    
+    personagem = new component(30, 30, "red", 10, 120);
+    pontuacao = new component("30px", "Consolas", "black", 280, 40, "text")
+    //obstaculo = new component(10, 200, "green", 300, 120);
     areaDoJogo.start();
-    personagem = new componente(30, 30, "red", 10, 120);
-    obstaculo = new componente(10, 200, "green", 300, 120);
 }
 
 var areaDoJogo = {
@@ -16,6 +19,7 @@ var areaDoJogo = {
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 
+        this.frameNo = 0; 
         this.interval = setInterval( atualizaAreaDoJogo, 20 );
 
         window.addEventListener('keydown', function (e) { //Ao pressionar tecla
@@ -36,7 +40,7 @@ var areaDoJogo = {
 
 }
 
-function componente( width, height, color, x, y) {
+function component( width, height, color, x, y) {
     this.width = width;
     this.height = height;
     this.velocidadeX = 0;
@@ -77,10 +81,48 @@ function componente( width, height, color, x, y) {
 
 function atualizaAreaDoJogo() {
 
+    var x, y;
+    for (i = 0; i < obstaculos.length; i += 1) {
+        if (personagem.colisaoCom(obstaculos[i])) {
+          areaDoJogo.stop();
+          return;
+        }
+    }
+    areaDoJogo.clear();
+    personagem.velocidadeX = 0;
+    personagem.velocidadeY = 0;
+
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft']  ) {personagem.velocidadeX = -1; }
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] ) {personagem.velocidadeX = 1; }
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    ) {personagem.velocidadeY = -1; }
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  ) {personagem.velocidadeY = 1;}
+
+    areaDoJogo.frameNo += 1;
+
+    if (areaDoJogo.frameNo == 1 || everyinterval(150)) {
+        x = areaDoJogo.canvas.width;
+        minHeight = 20;
+        maxHeight = 200;
+        height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+        minGap = 50;
+        maxGap = 200;
+        gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+        obstaculos.push(new component(10, height, "green", x, 0));
+        obstaculos.push(new component(10, x - height - gap, "green", x, height + gap));
+    }
+
+    for (i = 0; i < obstaculos.length; i += 1) {
+      obstaculos[i].x += -1;
+      obstaculos[i].update();
+    }
+    personagem.newPos();
+    personagem.update();
+/*
     if ( personagem.colisaoCom( obstaculo ) ) {
         areaDoJogo.stop();
     } else {
         areaDoJogo.clear();
+        obstaculo.x += -1;
         personagem.velocidadeX = 0;
         personagem.velocidadeY = 0;
     
@@ -92,9 +134,16 @@ function atualizaAreaDoJogo() {
         obstaculo.update();
         personagem.newPos();
         personagem.update();
-    }
+    }*/
 
 }
+
+function everyinterval(n) {
+    if ((areaDoJogo.frameNo / n) % 1 == 0) {return true;}
+    return false;
+  }
+
+
 /*
 function moveAcima() {
     personagem.velocidadeY -= 1;
