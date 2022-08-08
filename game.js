@@ -2,13 +2,18 @@ var personagem;
 var obstaculos = [];
 var pontuacao;
 var fundo;
+var som;
+var musica
 
 function startGame() {
     
     //personagem = new component(30, 30, "red", 10, 120);
     
-    fundo = new component(656, 270, "pista.png", 0, 0, "image");
+    fundo = new component(656, 270, "pista.png", 0, 0, "background");
     personagem = new component(30, 30, "car.png", 10, 120, "image");
+    som = new sound("bounce.mp3")
+    musica = new sound("gametheme.mp3");
+    musica.play();
     pontuacao = new component("30px", "Consolas", "black", 280, 40, "text")
     //obstaculo = new component(10, 200, "green", 300, 120);
     areaDoJogo.start();
@@ -63,8 +68,10 @@ function component( width, height, color, x, y, type) {
             ctx.font = this.width + " " + this.height;
             ctx.fillStyle = color;
             ctx.fillText(this.text, this.x, this.y);
-        } else if (type == "image") {
+        } else if (type == "image" || type == "background" ) {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+            if ( type == "background")
+                ctx.drawImage(this.image, this.x + this.width , this.y, this.width, this.height);
         } else {
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -101,6 +108,7 @@ function atualizaAreaDoJogo() {
     var x, y;
     for (i = 0; i < obstaculos.length; i += 1) {
         if (personagem.colisaoCom(obstaculos[i])) {
+          som.play();
           areaDoJogo.stop();
           return;
         }
@@ -140,30 +148,27 @@ function atualizaAreaDoJogo() {
     fundo.update();
     personagem.newPos();
     personagem.update();
-/*
-    if ( personagem.colisaoCom( obstaculo ) ) {
-        areaDoJogo.stop();
-    } else {
-        areaDoJogo.clear();
-        obstaculo.x += -1;
-        personagem.velocidadeX = 0;
-        personagem.velocidadeY = 0;
-    
-        if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft']  ) {personagem.velocidadeX = -1; }
-        if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] ) {personagem.velocidadeX = 1; }
-        if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    ) {personagem.velocidadeY = -1; }
-        if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  ) {personagem.velocidadeY = 1;}
-    
-        obstaculo.update();
-        personagem.newPos();
-        personagem.update();
-    }*/
 
 }
 
 function everyinterval(n) {
     if ((areaDoJogo.frameNo / n) % 1 == 0) {return true;}
     return false;
+}
+
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+      this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
   }
 
 
