@@ -7,7 +7,17 @@
     <title> Canvas Game </title>
 
     <style>
+        #tela{
+            background-color: blue;
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+ 
+        }
         canvas {
+            margin: 0;
             border: 1px solid #d3d3d3;
             background-color: #f1f1f1;
         }
@@ -15,16 +25,8 @@
 
 </head>
 
-<body onload="startGame()">
+<body id="tela" onload="startGame()"></body>
 
-    <script src="carGame.js"></script>
-    <p>Area do Jogo</p>
+<script src="carGame.js"></script>
 
-    <!--
-    <button onclick="moveAcima()">cima</button>
-    <button onclick="moveAbaixo()">baixo</button>
-    <button onclick="moveEsquerda()">esquerda</button>
-    <button onclick="moveDireita()">direita</button>-->
-    
-</body>
 </html>

@@ -169,7 +169,7 @@ function sound(src) {
     this.stop = function(){
       this.sound.pause();
     }
-  }
+}
 
 
 /*
