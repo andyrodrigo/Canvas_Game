@@ -1,6 +1,8 @@
 var personagem;
 var obstaculos = [];
+let movimento = 1;
 var pontuacao;
+var pontos = 0;
 var fundo;
 var som;
 var musica
@@ -10,7 +12,7 @@ function startGame() {
     personagem = new component(30, 30, "car.png", 185, 450, "image"); //tamX, tamY, imagem, posX, posY
     //personagem = new component(30, 30, "red", 10, 120);
     
-    pontuacao = new component("30px", "Consolas", "black", 280, 40, "text")
+    pontuacao = new component("30px", "Consolas", "white", 20, 40, "text")
     fundo = new component(300, 500, "pista.png", 0, 0, "background");
   
     areaDoJogo.start();
@@ -75,9 +77,7 @@ function component( width, height, objeto, x, y, type) {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
             
             if ( type == "background"){ //loop
-                console.log("1: " + this.y)
                 ctx.drawImage(this.image, this.x , this.y - this.height, this.width, this.height);
-                console.log("2: " + (this.y - this.height) )
             }
         } else {
             ctx.fillStyle = objeto;
@@ -128,10 +128,13 @@ function atualizaAreaDoJogo() {
     personagem.velocidadeX = 0;
     personagem.velocidadeY = 0;
 
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft']  ) {personagem.velocidadeX = -1; personagem.image.src = "car2.png" }
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] ) {personagem.velocidadeX = 1; }
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    ) {personagem.velocidadeY = -1; }
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  ) {personagem.velocidadeY = 1;}
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
+        personagem.velocidadeX = -1;
+        //personagem.image.src = "car2.png" 
+    }
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] && personagem.x < 270) {personagem.velocidadeX = 1; }
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    && personagem.y > 400) {personagem.velocidadeY = -1; }
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  && personagem.y < 485 ) {personagem.velocidadeY = 1;}
 
     fundo.velocidadeY = 5;
     fundo.newPos();
@@ -148,15 +151,28 @@ function atualizaAreaDoJogo() {
 
     for (i = 0; i < obstaculos.length; i += 1) {
       obstaculos[i].y += 1;
+      movimento = Math.floor( Math.random()*3)-1
+      console.log(movimento)
+      moveCarro(movimento, i)
+      obstaculos[i].newPos();
       obstaculos[i].update();
     }
 
-    pontuacao.text = "Pontos: " + areaDoJogo.frameNo;
+    if( areaDoJogo.frameNo % 100 == 0){
+        pontos +=10;
+    }
+    pontuacao.text = "Pontos: " + pontos;
     pontuacao.update();
 
     personagem.newPos();
     personagem.update();
 
+}
+
+function moveCarro( movimento, i){
+    if( areaDoJogo.frameNo % 100 == 0){
+        obstaculos[i].velocidadeX = movimento;     
+    }
 }
 
 function everyinterval(n) {
