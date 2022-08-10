@@ -3,13 +3,64 @@ var obstaculos = [];
 let movimento = 1;
 var pontuacao;
 var pontos = 0;
+var veloCarros = 1;
+var velPista = 10;
 var fundo;
 var som;
-var musica
+var musica;
+var intervalo = 40;
+var veiculo =  "verde"
+var imagemCarro = "carroTrash.png"
+let aceleracao = 1;
+let freio = 1;
+let curva = 1;
+var imagensCarros = ["carroTrash.png", "car.png", "carroAzulEscuro.png", "carroBranco.png" ]
+
 
 function startGame() {
+
+    switch(veiculo){
+        case "preto":
+            imagemCarro = "carroPreto.png"//sombra
+            aceleracao = 2;
+            freio = 2;
+            curva = 2;
+            break;
+        case "roxo":
+            imagemCarro = "carroRoxo.png"//Íris
+            aceleracao = 4;
+            freio = 2;
+            curva = 1;
+            break;
+        case "azul":
+            imagemCarro = "carroAzul.png"//oceano
+            aceleracao = 1;
+            freio = 1;
+            curva = 3;
+            break;
+        case "verde":
+            imagemCarro = "carroVerde.png"//raiz
+            aceleracao = 1;
+            freio = 3;
+            curva = 2;
+            break;
+        case "vermelho":
+            imagemCarro = "carroVermelho.png"//escarlate
+            aceleracao = 5;
+            freio = 5;
+            curva = 5;
+            break;
+        case "trash":
+            imagemCarro = "carroTrash.png"//trash
+            aceleracao = 1;
+            freio = 1;
+            curva = 1;
+            break;
+        default:
+            alert("Carro não selecionado")
+    }
     
-    personagem = new component(30, 30, "car.png", 185, 450, "image"); //tamX, tamY, imagem, posX, posY
+    personagem = new component(30, 30, imagemCarro, 185, 450, "image"); //tamX, tamY, imagem, posX, posY
     //personagem = new component(30, 30, "red", 10, 120);
     
     pontuacao = new component("30px", "Consolas", "white", 20, 40, "text")
@@ -96,14 +147,14 @@ function component( width, height, objeto, x, y, type) {
     }
 
     this.colisaoCom = function( outroObjeto) {
-        var myleft = this.x;
-        var myright = this.x + (this.width);
-        var mytop = this.y;
-        var mybottom = this.y + (this.height);
-        var otherleft = outroObjeto.x;
-        var otherright = outroObjeto.x + (outroObjeto.width);
-        var othertop = outroObjeto.y;
-        var otherbottom = outroObjeto.y + (outroObjeto.height);
+        var myleft = this.x + 2;
+        var myright = this.x + (this.width - 2);
+        var mytop = this.y + 2;
+        var mybottom = this.y + (this.height - 2);
+        var otherleft = outroObjeto.x + 2;
+        var otherright = outroObjeto.x + (outroObjeto.width - 2);
+        var othertop = outroObjeto.y + 2;
+        var otherbottom = outroObjeto.y + (outroObjeto.height - 2);
         var colisao = true;
         if ((mybottom < othertop) ||
             (mytop > otherbottom) ||
@@ -128,38 +179,56 @@ function atualizaAreaDoJogo() {
     personagem.velocidadeX = 0;
     personagem.velocidadeY = 0;
 
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
-        personagem.velocidadeX = -1;
+   // if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
+        if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
+        personagem.velocidadeX = -curva;
         //personagem.image.src = "car2.png" 
     }
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] && personagem.x < 270) {personagem.velocidadeX = 1; }
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    && personagem.y > 400) {personagem.velocidadeY = -1; }
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  && personagem.y < 485 ) {personagem.velocidadeY = 1;}
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] && personagem.x < 270) {personagem.velocidadeX = curva; }
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    && personagem.y > 0) {personagem.velocidadeY = -aceleracao; }
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  && personagem.y < 485 ) {personagem.velocidadeY = freio;}
 
-    fundo.velocidadeY = 5;
+    fundo.velocidadeY = velPista;
     fundo.newPos();
     fundo.update();
 
     areaDoJogo.frameNo += 1;
 
-    if (areaDoJogo.frameNo == 1 || everyinterval(50)) {
+    if (areaDoJogo.frameNo == 1 || everyinterval(intervalo)) {
+        let carroAleatorio = imagensCarros[ Math.floor(Math.random()*4) ] ;
+        //let carroAleatorio = imagensCarros[2] ;
+        //console.log(carroAleatorio)
         minWidth = 10;
         maxWidth = 260;
         width = Math.floor(Math.random()*(maxWidth-minWidth+1)+minWidth);
-        obstaculos.push( new component(30, 30, "car.png", width, -30, "image") );
+        obstaculos.push( new component(30, 30, carroAleatorio , width, -30, "image") );
     }
 
     for (i = 0; i < obstaculos.length; i += 1) {
-      obstaculos[i].y += 1;
-      movimento = Math.floor( Math.random()*3)-1
-      console.log(movimento)
-      moveCarro(movimento, i)
-      obstaculos[i].newPos();
+      obstaculos[i].y += veloCarros;
+
+      if( Math.floor( Math.random()*10) == 0 ){
+        moveCarro(i)
+      }
+      if( obstaculos[i].x > 5 && obstaculos[i].x < 265){
+        obstaculos[i].newPos();
+      }
       obstaculos[i].update();
     }
 
     if( areaDoJogo.frameNo % 100 == 0){
         pontos +=10;
+        if(pontos % 100 == 0){
+            if(veloCarros < 5){
+                console.log(veloCarros)
+                veloCarros++
+                //intervalo = intervalo - 5
+            }else if (intervalo > 10){
+                console.log(intervalo)
+                intervalo--
+            }
+            
+        }
     }
     pontuacao.text = "Pontos: " + pontos;
     pontuacao.update();
@@ -169,8 +238,10 @@ function atualizaAreaDoJogo() {
 
 }
 
-function moveCarro( movimento, i){
-    if( areaDoJogo.frameNo % 100 == 0){
+function moveCarro(i){
+    movimento = Math.floor( Math.random()*3) - 1
+    //console.log(movimento)
+    if( areaDoJogo.frameNo % 50 == 0){
         obstaculos[i].velocidadeX = movimento;     
     }
 }
