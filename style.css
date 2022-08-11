@@ -52,6 +52,7 @@ canvas {
 }
 
 #iniciar{
+    display: none;
     background-color:goldenrod;
     border-radius: 10px;
     border: 1px;
