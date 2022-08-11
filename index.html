@@ -4,28 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Canvas Game </title>
+    <link rel="stylesheet" href="style.css">
 
-    <style>
-        #tela{
-            background-color: blue;
-            max-width: 100%;
-            max-height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
- 
-        }
-        canvas {
-            margin: 0;
-            border: 1px solid #d3d3d3;
-            background-color: #f1f1f1;
-        }
-        </style>
+    <title> Rodovia Maluca </title>
 
 </head>
 
-<body id="tela" onload="startGame()"></body>
+<body >
+
+    <main class="flex">
+
+
+        <div id="telaInicial">
+
+            <p>ESCOLHA SEU CARRO</p>
+
+            <div>
+                <div class="blocoCarro">
+                    <p> BROKEN </p>
+                    <img src="CarroBrokenEscolha.png" alt="Carro Trash">
+                    <p>Aceleração: <span>péssima</span> </p>
+                    <p>Curva: <span>boa</span> </p>
+                    <p>Freio: <span>quebrado</span> </p>
+                </div>
+                
+                <img src="CarroFerrugemEscolha.png" alt="Carro Trash">
+                <img src="CarroTrashEscolha.png" alt="Carro Trash">
+                <img src="CarroOuroEscolha.png" alt="Carro Trash">
+                <img src="CarroPretoEscolha.png" alt="Carro Trash">
+                <img src="CarroAzulEscolha.png" alt="Carro Trash">
+                <img src="CarroRoxoEscolha.png" alt="Carro Trash">
+                <img src="CarroVerdeEscolha.png" alt="Carro Trash">
+                <img src="CarroVermelhoEscolha.png" alt="Carro Trash">
+                <img src="CarroPolicialEscolha.png" alt="Carro Trash">
+            </div>
+
+            <button onclick="startGame()" >clique</button>
+        </div>
+    
+        <div id="telaDoJogo"></div>
+
+    </main>
+
+
+
+</body>
 
 <script src="carGame.js"></script>
 

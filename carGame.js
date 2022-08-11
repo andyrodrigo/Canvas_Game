@@ -1,3 +1,10 @@
+
+
+const telaDoJogo = document.getElementById('telaDoJogo')
+
+
+
+
 var personagem;
 var obstaculos = [];
 let movimento = 1;
@@ -9,7 +16,7 @@ var fundo;
 var som;
 var musica;
 var intervalo = 40;
-var veiculo =  "verde"
+var veiculo =  "roxo"
 var imagemCarro = "carroTrash.png"
 let aceleracao = 1;
 let freio = 1;
@@ -45,7 +52,13 @@ function startGame() {
             curva = 2;
             break;
         case "vermelho":
-            imagemCarro = "carroVermelho.png"//escarlate
+            imagemCarro = "carroVermelho2.png"//escarlate
+            aceleracao = 5;
+            freio = 5;
+            curva = 5;
+            break;
+        case "nutela":
+            imagemCarro = "nutela2.png"//escarlate
             aceleracao = 5;
             freio = 5;
             curva = 5;
@@ -77,7 +90,10 @@ var areaDoJogo = {
         this.canvas.width = 300;
         this.canvas.height = 500;
         this.context = this.canvas.getContext("2d");
-        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+
+        telaDoJogo.appendChild(this.canvas);
+
+        //document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 
         this.frameNo = 0; 
         this.interval = setInterval( atualizaAreaDoJogo, 20 );
