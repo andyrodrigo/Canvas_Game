@@ -17,29 +17,95 @@
 
         <div id="telaInicial">
 
-            <p>ESCOLHA SEU CARRO</p>
+            <p id="escolhaP">ESCOLHA SEU CARRO</p>
 
-            <div>
-                <div class="blocoCarro">
-                    <p> BROKEN </p>
+            <p id="iniciar" onclick="startGame()" >INICIAR JOGO</p>
+
+            <div id="selecao" class="flex">
+
+                <div id="carro1" class="blocoCarro">
+                    <p class="nomeCarro"> BROKEN </p>
                     <img src="CarroBrokenEscolha.png" alt="Carro Trash">
-                    <p>Aceleração: <span>péssima</span> </p>
-                    <p>Curva: <span>boa</span> </p>
-                    <p>Freio: <span>quebrado</span> </p>
+                    <p>Aceleração: <span class="red">péssima</span> </p>
+                    <p>Curva: <span class="blue">boa</span> </p>
+                    <p>Freio: <span class="red">quebrado</span> </p>
+                </div>
+
+                <div class="blocoCarro">
+                    <p class="nomeCarro"> FERRUGEM </p>
+                    <img src="CarroFerrugemEscolha.png" alt="Carro Trash">
+                    <p>Aceleração: <span class="blue">boa</span> </p>
+                    <p>Curva: <span class="green">ótima</span> </p>
+                    <p>Freio: <span class="red">quebrado</span> </p>
+                </div>
+
+                <div class="blocoCarro">
+                    <p class="nomeCarro"> TRASH </p>
+                    <img src="CarroTrashEscolha.png" alt="Carro Trash">
+                    <p>Aceleração: <span class="red">péssima</span> </p>
+                    <p>Curva: <span class="green">ótima</span> </p>
+                    <p>Freio: <span class="blue">bom</span> </p>
+                </div>
+
+                <div class="blocoCarro">
+                    <p class="nomeCarro"> DOURADO </p>
+                    <img src="CarroOuroEscolha.png" alt="Carro Trash">
+                    <p>Aceleração: <span class="blue">boa</span> </p>
+                    <p>Curva: <span class="blue">boa</span> </p>
+                    <p>Freio: <span class="blue">boa</span> </p>
+                </div>
+
+                <div class="blocoCarro">
+                    <p class="nomeCarro"> SOMBRA </p>
+                    <img src="CarroPretoEscolha.png" alt="Carro Trash">
+                    <p>Aceleração: <span class="green">ótima</span> </p>
+                    <p>Curva: <span class="green">ótima</span> </p>
+                    <p>Freio: <span class="green">ótimo</span> </p>
+                </div>
+
+                <div class="blocoCarro">
+                    <p class="nomeCarro"> OCEANO </p>
+                    <img src="CarroAzulEscolha.png" alt="Carro Trash">
+                    <p>Aceleração: <span class="blue">boa</span> </p>
+                    <p>Curva: <span class="yellow">excelente</span> </p>
+                    <p>Freio: <span class="blue">bom</span> </p>
+                </div>
+
+                <div class="blocoCarro">
+                    <p class="nomeCarro"> NITRO </p>
+                    <img src="CarroRoxoEscolha.png" alt="Carro Trash">
+                    <p>Aceleração: <span class="gold">impressionante</span> </p>
+                    <p>Curva: <span class="blue">boa</span> </p>
+                    <p>Freio: <span class="green">ótimo</span> </p>
+                </div>
+
+                <div class="blocoCarro">
+                    <p class="nomeCarro"> RAIZ </p>
+                    <img src="CarroVerdeEscolha.png" alt="Carro Trash">
+                    <p>Aceleração: <span class="blue">boa</span> </p>
+                    <p>Curva: <span class="green">ótima</span> </p>
+                    <p>Freio: <span class="yellow">excelente</span> </p>
+                </div>
+
+                <div class="blocoCarro">
+                    <p class="nomeCarro"> ESCARLATE </p>
+                    <img src="CarroVermelhoEscolha.png" alt="Carro Trash">
+                    <p>Aceleração: <span class="gold">impressionante</span> </p>
+                    <p>Curva: <span class="gold">impressionante</span> </p>
+                    <p>Freio: <span class="gold">impressionante</span> </p>
+                </div>
+
+                <div class="blocoCarro">
+                    <p class="nomeCarro"> SSP </p>
+                    <img src="CarroPolicialEscolha.png" alt="Carro Trash">
+                    <p>Aceleração: <span class="golden">excepcional</span> </p>
+                    <p>Curva: <span class="golden">excepcional</span> </p>
+                    <p>Freio: <span class="golden">excepcional</span> </p>
                 </div>
                 
-                <img src="CarroFerrugemEscolha.png" alt="Carro Trash">
-                <img src="CarroTrashEscolha.png" alt="Carro Trash">
-                <img src="CarroOuroEscolha.png" alt="Carro Trash">
-                <img src="CarroPretoEscolha.png" alt="Carro Trash">
-                <img src="CarroAzulEscolha.png" alt="Carro Trash">
-                <img src="CarroRoxoEscolha.png" alt="Carro Trash">
-                <img src="CarroVerdeEscolha.png" alt="Carro Trash">
-                <img src="CarroVermelhoEscolha.png" alt="Carro Trash">
-                <img src="CarroPolicialEscolha.png" alt="Carro Trash">
             </div>
 
-            <button onclick="startGame()" >clique</button>
+            
         </div>
     
         <div id="telaDoJogo"></div>
@@ -50,6 +116,7 @@
 
 </body>
 
+<script src="index.js"></script>
 <script src="carGame.js"></script>
 
 </html>
