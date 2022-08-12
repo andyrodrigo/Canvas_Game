@@ -24,6 +24,7 @@ const ssp = document.getElementById('ssp')
 var personagem;
 var obstaculos = [];
 let movimento = 1;
+var nivel = 1;
 var pontuacao;
 var pontos = 0;
 var veloCarros = 1;

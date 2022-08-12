@@ -94,4 +94,5 @@ function limparJogo(){
     veloCarros = 1;
     velPista = 10;
     intervalo = 40;
+    nivel = 1
 }

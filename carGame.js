@@ -109,33 +109,12 @@ function atualizaAreaDoJogo() {
           return;
         }
     }
+
     areaDoJogo.clear();
     personagem.velocidadeX = 0;
     personagem.velocidadeY = 0;
 
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
-       // if (areaDoJogo.keys && areaDoJogo.keys['KeyA'] && personagem.x > 0  ) {
-        //if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
-        personagem.velocidadeX = -curva;
-        //personagem.image.src = "car2.png" 
-    }
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] && personagem.x < 270) {personagem.velocidadeX = curva; }
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    && personagem.y > 0) { 
-        if( aceleracao == 0 && personagem.y > 450){
-            if( areaDoJogo.frameNo % 5 == 0)
-            personagem.velocidadeY = -1;
-        }else{
-            personagem.velocidadeY = -aceleracao;
-        }   
-    }
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  && personagem.y < 485 ) {
-        if( freio == 0 && personagem.y < 450){
-            if( areaDoJogo.frameNo % 5 == 0)
-            personagem.velocidadeY = 1;
-        }else{
-            personagem.velocidadeY = freio;
-        }    
-    }
+    controles()
 
     fundo.velocidadeY = velPista;
     fundo.newPos();
@@ -143,47 +122,48 @@ function atualizaAreaDoJogo() {
 
     areaDoJogo.frameNo += 1;
 
-    if (areaDoJogo.frameNo == 1 || everyinterval(intervalo)) {
-        let carroAleatorio = imagensCarros[ Math.floor(Math.random()*10) ] ;
-        //console.log(carroAleatorio)
-        minWidth = 10;
-        maxWidth = 260;
-        width = Math.floor(Math.random()*(maxWidth-minWidth+1)+minWidth);
-        obstaculos.push( new component(30, 30, carroAleatorio , width, -30, "image") );
-    }
-
-    for (i = 0; i < obstaculos.length; i += 1) {
-      obstaculos[i].y += veloCarros;
-
-      if( Math.floor( Math.random()*10) == 0 ){
-        moveCarro(i)
-      }
-      if( obstaculos[i].x > 5 && obstaculos[i].x < 265){
-        obstaculos[i].newPos();
-      }
-      obstaculos[i].update();
-    }
+    niveis()
 
     if( areaDoJogo.frameNo % 100 == 0){
         pontos +=10;
-        if(pontos % 100 == 0){
-            if(veloCarros < 5){
-                console.log(veloCarros)
-                veloCarros++
-                //intervalo = intervalo - 5
-            }else if (intervalo > 10){
-                console.log(intervalo)
-                intervalo--
-            }
-            
+        if( pontos % 100 == 0){       
+            nivel += 1;
+            console.log(nivel)
         }
     }
+
     pontuacao.text = "Pontos: " + pontos;
     pontuacao.update();
 
     personagem.newPos();
     personagem.update();
 
+}
+
+function controles(){
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
+        // if (areaDoJogo.keys && areaDoJogo.keys['KeyA'] && personagem.x > 0  ) {
+         //if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
+         personagem.velocidadeX = -curva;
+         //personagem.image.src = "car2.png" 
+     }
+     if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] && personagem.x < 270) {personagem.velocidadeX = curva; }
+     if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    && personagem.y > 0) { 
+         if( aceleracao == 0 && personagem.y > 450){
+             if( areaDoJogo.frameNo % 5 == 0)
+             personagem.velocidadeY = -1;
+         }else{
+             personagem.velocidadeY = -aceleracao;
+         }   
+     }
+     if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  && personagem.y < 485 ) {
+         if( freio == 0 && personagem.y < 450){
+             if( areaDoJogo.frameNo % 5 == 0)
+             personagem.velocidadeY = 1;
+         }else{
+             personagem.velocidadeY = freio;
+         }    
+     }
 }
 
 function moveCarro(i){
