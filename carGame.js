@@ -4,13 +4,12 @@ var areaDoJogo = {
     canvas: document.createElement("canvas"),
 
     start : function() {
+
         this.canvas.width = 300;
         this.canvas.height = 500;
         this.context = this.canvas.getContext("2d");
 
         telaDoJogo.appendChild(this.canvas);
-
-        //document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 
         this.frameNo = 0; 
         this.interval = setInterval( atualizaAreaDoJogo, 20 );
@@ -104,7 +103,9 @@ function atualizaAreaDoJogo() {
     var x, y;
     for (i = 0; i < obstaculos.length; i += 1) {
         if (personagem.colisaoCom(obstaculos[i])) {
+          somColisao.play();
           areaDoJogo.stop();
+          somDirigindo.pause();
           return;
         }
     }
@@ -182,19 +183,4 @@ function moveCarro(i){
 function everyinterval(n) {
     if ((areaDoJogo.frameNo / n) % 1 == 0) {return true;}
     return false;
-}
-
-function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function(){
-      this.sound.play();
-    }
-    this.stop = function(){
-      this.sound.pause();
-    }
 }

@@ -26,16 +26,17 @@ var pontos = 0;
 var veloCarros = 1;
 var velPista = 10;
 var fundo;
-var som;
-var musica;
+var somColisao;
+var somLigando = new Audio("audio/ligando.mp3")
+var somDirigindo;
 var intervalo = 40;
 var veiculo =  "roxo"
-var imagemCarro = "carroTrash.png"
+var imagemCarro = "imagens/carroTrash.png"
 let aceleracao = 1;
 let freio = 1;
 let curva = 1;
 var veiculos = ["broken", "ferrugem", "trash", "dourado", "sombra", "oceano", "nitro", "raiz", "escarlate", "ssp"]
-var imagensCarros = ["carroTrash.png", "car.png", "carroAzulEscuro.png", "carroBranco.png" ]
+var imagensCarros = ["imagens/carroTrash.png", "imagens/car.png", "imagens/carroAzulEscuro.png", "imagens/carroBranco.png" ]
 
 //Escutadores---------------------------------------------------------------------------
 

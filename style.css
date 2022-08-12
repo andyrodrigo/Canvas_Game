@@ -23,9 +23,11 @@ main{
     background-color: rgb(223, 225, 228);
 }
 
-#tela{
+#telaDoJogo{
+    width: 300px;
+    height: 300px;
     background-color: blue;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 
@@ -44,22 +46,21 @@ canvas {
 
 #escolhaP{
     background-color: crimson;
-    border-radius: 10px;
-    border: 1px;
-    color: aliceblue;
-    width: 96%;
-    margin: 5px;
 }
 
 #iniciar{
     display: none;
     background-color:goldenrod;
+    cursor: pointer;
+}
+
+.radios{
+    font-size: 35px;
     border-radius: 10px;
     border: 1px;
-    color:aliceblue;
+    color: aliceblue;
     width: 96%;
     margin: 5px;
-    cursor: pointer;
 }
 
 #iniciar:hover{
@@ -68,12 +69,12 @@ canvas {
 }
 
 #selecao{
-    max-width: 600px;
+    max-width: 900px;
 }
 
 .blocoCarro{
-    font-size: 10px;
-    width: 130px;
+    font-size: 15px;
+    width: 190px;
     margin: 5px;
     text-align: center;
     cursor: pointer;
@@ -85,17 +86,18 @@ canvas {
     background-color:aliceblue;
     border: 1px solid black;
 }
-/*
+
 .blocoCarro > img{
-    width: 100px;
+    width: 180px;
     height: 100px;
-}*/
+}
+
 span{
-    font-size: 8px;
+    font-size: 11px;
 }
 
 .nomeCarro{
-    font-size: 15px;
+    font-size: 25px;
     font-weight: bold;
     color: rgb(56, 0, 95);
 }

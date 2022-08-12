@@ -1,6 +1,11 @@
 //FUnções da Tela
 
 function escolherCarro( nomeDoCarro , a, f, c ){
+
+    //somLigando.pause();
+    somLigando.currentTime=0;
+    somLigando.play();
+
     veiculo = nomeDoCarro
     aceleracao = a;
     freio = f;
@@ -8,34 +13,34 @@ function escolherCarro( nomeDoCarro , a, f, c ){
 
     switch(veiculo){
         case "broken":
-            imagemCarro = "carroBroken.png"//trash
+            imagemCarro = "imagens/carroBroken.png"//trash
             break;
         case "ferrugem":
-            imagemCarro = "carroFerrugem.png"//trash
+            imagemCarro = "imagens/carroFerrugem.png"//trash
             break;
         case "trash":
-            imagemCarro = "carroTrash.png"//trash
+            imagemCarro = "imagens/carroTrash.png"//trash
             break;
         case "dourado":
-            imagemCarro = "carroDourado.png"//trash
+            imagemCarro = "imagens/carroOuro.png"//trash
             break;
         case "sombra":
-            imagemCarro = "carroPreto.png"//sombra
+            imagemCarro = "imagens/carroPreto.png"//sombra
             break;
         case "nitro":
-            imagemCarro = "carroRoxo.png"//Íris
+            imagemCarro = "imagens/carroRoxo.png"//Íris
             break;
         case "oceano":
-            imagemCarro = "carroAzul.png"//oceano
+            imagemCarro = "imagens/carroAzul.png"//oceano
             break;
         case "raiz":
-            imagemCarro = "carroVerde.png"//raiz
+            imagemCarro = "imagens/carroVerde.png"//raiz
             break;
         case "escarlate":
-            imagemCarro = "carroVermelho2.png"//escarlate
+            imagemCarro = "imagens/carroVermelho2.png"//escarlate
             break;
         case "ssp":
-            imagemCarro = "carroPolicial.png"//escarlate
+            imagemCarro = "imagens/carroPolicial.png"//escarlate
             break;
         default:
             alert("Carro não selecionado")
@@ -53,11 +58,21 @@ function iniciarJogo() {
     //alert(imagemCarro)
     personagem = new component(30, 30, imagemCarro, 185, 450, "image"); //tamX, tamY, imagem, posX, posY
     //personagem = new component(30, 30, "red", 10, 120);
+
+    somColisao = new Audio("audio/colisao.mp3")
+    somDirigindo = new Audio("audio/dirigindo.mp3");
+    somDirigindo.play();
     
     pontuacao = new component("30px", "Consolas", "white", 20, 40, "text")
-    fundo = new component(300, 500, "pista.png", 0, 0, "background");
+    fundo = new component(300, 500, "imagens/pista.png", 0, 0, "background");
 
     telaInicial.style.display = "none"
+    telaDoJogo.style.display = "flex"
   
     areaDoJogo.start();
 }
+
+somDirigindo.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);

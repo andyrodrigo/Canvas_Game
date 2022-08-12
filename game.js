@@ -10,10 +10,10 @@ function startGame() {
     //personagem = new component(30, 30, "red", 10, 120);
     
     fundo = new component(656, 270, "pista.png", 0, 0, "background");
-    personagem = new component(30, 30, "car.png", 10, 120, "image");
-    som = new sound("bounce.mp3")
-    musica = new sound("gametheme.mp3");
-    musica.play();
+    personagem = new component(30, 30, "imagens/car.png", 10, 120, "image");
+    //som = new sound("bounce.mp3")
+    //musica = new sound("gametheme.mp3");
+    //musica.play();
     pontuacao = new component("30px", "Consolas", "black", 280, 40, "text")
     //obstaculo = new component(10, 200, "green", 300, 120);
     areaDoJogo.start();
@@ -108,7 +108,7 @@ function atualizaAreaDoJogo() {
     var x, y;
     for (i = 0; i < obstaculos.length; i += 1) {
         if (personagem.colisaoCom(obstaculos[i])) {
-          som.play();
+         //som.play();
           areaDoJogo.stop();
           return;
         }
