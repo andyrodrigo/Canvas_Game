@@ -3,8 +3,11 @@
 //Caixas do Jogo
 const telaDoJogo = document.getElementById('telaDoJogo')
 const telaInicial = document.getElementById('telaInicial')
+const TelaDeBatida = document.getElementById('TelaDeBatida')
 
 const iniciar = document.getElementById('iniciar')
+const reiniciar = document.getElementById('reiniciar')
+const outro = document.getElementById('outro')
 
 const broken = document.getElementById('broken')
 const ferrugem = document.getElementById('ferrugem')
@@ -36,7 +39,10 @@ let aceleracao = 1;
 let freio = 1;
 let curva = 1;
 var veiculos = ["broken", "ferrugem", "trash", "dourado", "sombra", "oceano", "nitro", "raiz", "escarlate", "ssp"]
-var imagensCarros = ["imagens/carroTrash.png", "imagens/car.png", "imagens/carroAzulEscuro.png", "imagens/carroBranco.png" ]
+var imagensCarros = ["imagens/outroCarroAmarelo.png", "imagens/outroCarroAzul.png",
+                    "imagens/outroCarroBranco.png", "imagens/outroCarroCinza.png", "imagens/outroCarroMarrom.png",
+                    "imagens/outroCarroPreto.png", "imagens/outroCarroRosa.png", "imagens/outroCarroRoxo.png",
+                    "imagens/outroCarroVerde.png", "imagens/outroCarroVermelho.png" ]
 
 //Escutadores---------------------------------------------------------------------------
 
@@ -44,7 +50,7 @@ function escutadores(){
 
     broken.addEventListener('click', function(){ escolherCarro("broken", 0, 0, 1) } )
     ferrugem.addEventListener('click', function(){ escolherCarro("ferrugem", 1, 0, 2 ) } )
-    trash.addEventListener('click', function(){ escolherCarro("trash"), 0, 1, 2 } )
+    trash.addEventListener('click', function(){ escolherCarro("trash", 0, 1, 2) } )
     dourado.addEventListener('click', function(){ escolherCarro("dourado", 1, 1, 1) } )
     sombra.addEventListener('click', function(){ escolherCarro("sombra", 2, 2, 2) } )
     oceano.addEventListener('click', function(){ escolherCarro("oceano", 1, 1, 3) } )
@@ -54,6 +60,8 @@ function escutadores(){
     ssp.addEventListener('click', function(){ escolherCarro("ssp", 5, 5 ,5) } )
 
     iniciar.addEventListener('click', iniciarJogo )
+    reiniciar.addEventListener('click', reiniciarJogo )
+    outro.addEventListener('click', voltar )
 
 }
 

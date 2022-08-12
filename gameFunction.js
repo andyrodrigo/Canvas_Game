@@ -62,6 +62,7 @@ function iniciarJogo() {
     somColisao = new Audio("audio/colisao.mp3")
     somDirigindo = new Audio("audio/dirigindo.mp3");
     somDirigindo.play();
+    somDirigindo.loop = true
     
     pontuacao = new component("30px", "Consolas", "white", 20, 40, "text")
     fundo = new component(300, 500, "imagens/pista.png", 0, 0, "background");
@@ -72,7 +73,25 @@ function iniciarJogo() {
     areaDoJogo.start();
 }
 
-somDirigindo.addEventListener('ended', function() {
-    this.currentTime = 0;
-    this.play();
-}, false);
+function voltar() {
+    telaInicial.style.display = "block"
+    telaDoJogo.style.display = "none"
+    TelaDeBatida.style.display = "none"
+    limparJogo()
+    //alert("aqui")
+    //areaDoJogo.remove()
+}
+
+function reiniciarJogo() {
+    TelaDeBatida.style.display = "none"
+    limparJogo()
+    iniciarJogo()
+}
+
+function limparJogo(){
+    obstaculos = [];
+    pontos = 0;
+    veloCarros = 1;
+    velPista = 10;
+    intervalo = 40;
+}

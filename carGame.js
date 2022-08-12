@@ -100,12 +100,12 @@ function component( width, height, objeto, x, y, type) {
 
 function atualizaAreaDoJogo() {
 
-    var x, y;
     for (i = 0; i < obstaculos.length; i += 1) {
         if (personagem.colisaoCom(obstaculos[i])) {
           somColisao.play();
           areaDoJogo.stop();
           somDirigindo.pause();
+          TelaDeBatida.style.display = "flex"
           return;
         }
     }
@@ -113,14 +113,29 @@ function atualizaAreaDoJogo() {
     personagem.velocidadeX = 0;
     personagem.velocidadeY = 0;
 
-   // if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
-        if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
+       // if (areaDoJogo.keys && areaDoJogo.keys['KeyA'] && personagem.x > 0  ) {
+        //if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
         personagem.velocidadeX = -curva;
         //personagem.image.src = "car2.png" 
     }
     if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] && personagem.x < 270) {personagem.velocidadeX = curva; }
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    && personagem.y > 0) {personagem.velocidadeY = -aceleracao; }
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  && personagem.y < 485 ) {personagem.velocidadeY = freio;}
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    && personagem.y > 0) { 
+        if( aceleracao == 0 && personagem.y > 450){
+            if( areaDoJogo.frameNo % 5 == 0)
+            personagem.velocidadeY = -1;
+        }else{
+            personagem.velocidadeY = -aceleracao;
+        }   
+    }
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  && personagem.y < 485 ) {
+        if( freio == 0 && personagem.y < 450){
+            if( areaDoJogo.frameNo % 5 == 0)
+            personagem.velocidadeY = 1;
+        }else{
+            personagem.velocidadeY = freio;
+        }    
+    }
 
     fundo.velocidadeY = velPista;
     fundo.newPos();
@@ -129,8 +144,7 @@ function atualizaAreaDoJogo() {
     areaDoJogo.frameNo += 1;
 
     if (areaDoJogo.frameNo == 1 || everyinterval(intervalo)) {
-        let carroAleatorio = imagensCarros[ Math.floor(Math.random()*4) ] ;
-        //let carroAleatorio = imagensCarros[2] ;
+        let carroAleatorio = imagensCarros[ Math.floor(Math.random()*10) ] ;
         //console.log(carroAleatorio)
         minWidth = 10;
         maxWidth = 260;
