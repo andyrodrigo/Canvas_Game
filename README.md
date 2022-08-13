@@ -71,6 +71,9 @@ e níveis que vão mudando a velocidade dos carros em tela, a quantidade de apar
 * [ ] Opção Full Screen
 * [ ] Instruções
 * [ ] Melhoria de Layout
+* [ ] Botão de Pausa
+* [ ] Buzina e Sirene
+* [ ] Mudar gráficos ao freiar (luz)
 
 
 
