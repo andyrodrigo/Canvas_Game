@@ -68,8 +68,10 @@ function component( width, height, objeto, x, y, type) {
         }
     }
 
+    
     this.newPos = function() {
         this.x += this.velocidadeX;
+        //console.log(this.velocidadeX)
         this.y += this.velocidadeY;
         if (this.type == "background") {
             if (this.y == this.height ) {
@@ -114,7 +116,7 @@ function atualizaAreaDoJogo() {
     personagem.velocidadeX = 0;
     personagem.velocidadeY = 0;
 
-   // controles()
+    controles()
 
     fundo.velocidadeY = velPista;
     fundo.newPos();
@@ -144,17 +146,22 @@ function controles(){
     if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
     //if (areaDoJogo.keys && areaDoJogo.keys['KeyA'] && personagem.x > 0  ) {     
          personagem.velocidadeX = -curva;
-         console.log( personagem.velocidadeX )
+         //console.log( personagem.velocidadeX )
          //personagem.image.src = "car2.png" 
      }
-     if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] && personagem.x < 270) {personagem.velocidadeX = curva; }
+     if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] && personagem.x < 270
+        || direita.onclick ) {
+        personagem.velocidadeX = curva;
+        //console.log(personagem.x)
+    }
      if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    && personagem.y > 0) { 
          if( aceleracao == 0 && personagem.y > 450){
              if( areaDoJogo.frameNo % 5 == 0)
              personagem.velocidadeY = -1;
          }else{
              personagem.velocidadeY = -aceleracao;
-         }   
+         }
+         
      }
      if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  && personagem.y < 485 ) {
          if( freio == 0 && personagem.y < 450){
@@ -187,27 +194,38 @@ function moveAcima() {
     }else{
         personagem.velocidadeY = -aceleracao;
     }
-    console.log( personagem.velocidadeY )
+    personagem.newPos();
+   // console.log( personagem.velocidadeY )
 }
   
 function moveAbaixo() {
     //alert("ok")
-    personagem.velocidadeY += 1;
+    if( freio == 0 && personagem.y < 450){
+        if( areaDoJogo.frameNo % 5 == 0)
+        personagem.velocidadeY = 1;
+    }else{
+        personagem.velocidadeY = freio;
+    }
+    console.log( "pressionado" )
+    personagem.newPos();
 }
 
 function moveEsquerda() {
     //alert("ok")
     personagem.velocidadeX = -curva;
-    console.log( personagem.velocidadeX )
+    personagem.newPos();
+    //personagem.image.src = "imagens/carroBroken.png"
+    //console.log( personagem.velocidadeX )
 }
 
 function moveDireita() {
     //alert("ok")
-    obstaculos[1].velocidadeX += 1;
-    console.log( "ok" )
+    personagem.velocidadeX = curva;
+    personagem.newPos();
+    //console.log( personagem.x )
 }
 
 function paraMovimento() {
-    personagem.velocidadeX = 0;
-    personagem.velocidadeY = 0;
+    obstaculos[0].velocidadeX = 0;
+    obstaculos[0].velocidadeY = 0;
 }

@@ -65,10 +65,10 @@ function escutadores(){
     escarlate.addEventListener('click', function(){ escolherCarro("escarlate", 4, 4, 4) } )
     ssp.addEventListener('click', function(){ escolherCarro("ssp", 5, 5 ,5) } )
 
-    esquerda.addEventListener('mousedown', moveEsquerda)
-    direita.addEventListener('mousedown', moveDireita)
-    acima.addEventListener('mousedown', moveAcima)
-    abaixo.addEventListener('mousedown', moveAbaixo)
+    esquerda.addEventListener('touchmove', moveEsquerda)
+    direita.addEventListener('touchmove', moveDireita)
+    acima.addEventListener('touchmove', moveAcima)
+    abaixo.addEventListener('touchmove', moveAbaixo)
 
     iniciar.addEventListener('click', iniciarJogo )
     reiniciar.addEventListener('click', reiniciarJogo )
