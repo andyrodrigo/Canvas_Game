@@ -14,14 +14,6 @@ var areaDoJogo = {
         this.frameNo = 0; 
         this.interval = setInterval( atualizaAreaDoJogo, 20 );
 
-        window.addEventListener('keydown', function (e) { //Ao pressionar tecla
-            areaDoJogo.keys = (areaDoJogo.keys || []);
-            areaDoJogo.keys[e.code] = true;
-        })
-        window.addEventListener('keyup', function (e) { //Ao soltar tecla
-            areaDoJogo.keys[e.code] = false;
-        })
-
     },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -143,8 +135,50 @@ function atualizaAreaDoJogo() {
 }
 
 function controles(){
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
-    //if (areaDoJogo.keys && areaDoJogo.keys['KeyA'] && personagem.x > 0  ) {     
+    if (areaDoJogo.keys){ 
+        if (areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  || //  ESQUERDA <-
+            areaDoJogo.keys['KeyA'] && personagem.x > 0  ) {     
+            personagem.velocidadeX = -curva;
+        }
+        if (areaDoJogo.keys['ArrowRight'] && personagem.x < 270 || //  DIREITA ->
+            areaDoJogo.keys['KeyD'] && personagem.x < 270  ) {
+            personagem.velocidadeX = curva;
+        }
+        if (areaDoJogo.keys['ArrowUp'] && personagem.y > 0 || // ACELERA
+            areaDoJogo.keys['KeyW'] && personagem.y > 0) { 
+            if( aceleracao == 0 && personagem.y > 450){
+                if( areaDoJogo.frameNo % 5 == 0)
+                personagem.velocidadeY = -1;
+            }else{
+                personagem.velocidadeY = -aceleracao;
+            }
+        }
+     if (areaDoJogo.keys['ArrowDown']  && personagem.y < 485 || //FREIA
+         areaDoJogo.keys['KeyS']  && personagem.y < 485) {
+            if( freio == 0 && personagem.y < 450){
+                if( areaDoJogo.frameNo % 5 == 0)
+                personagem.velocidadeY = 1;
+            }else{
+                personagem.velocidadeY = freio;
+            }    
+         }
+    }
+}
+
+function pressionaTecla(e){
+    areaDoJogo.keys = (areaDoJogo.keys || []);
+    areaDoJogo.keys[e.code] = true;
+}
+
+function soltaTecla(e){
+    areaDoJogo.keys[e.code] = false;
+}
+
+
+/*
+function controles(){
+    if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ||
+        areaDoJogo.keys && areaDoJogo.keys['KeyA'] && personagem.x > 0  ) {     
          personagem.velocidadeX = -curva;
          //console.log( personagem.velocidadeX )
          //personagem.image.src = "car2.png" 
@@ -171,7 +205,7 @@ function controles(){
              personagem.velocidadeY = freio;
          }    
      }
-}
+}*/
 
 function moveCarro(i){
     movimento = Math.floor( Math.random()*3) - 1
@@ -229,3 +263,4 @@ function paraMovimento() {
     obstaculos[0].velocidadeX = 0;
     obstaculos[0].velocidadeY = 0;
 }
+
