@@ -9,6 +9,11 @@ const iniciar = document.getElementById('iniciar')
 const reiniciar = document.getElementById('reiniciar')
 const outro = document.getElementById('outro')
 
+const esquerda = document.getElementById('esquerda')
+const direita = document.getElementById('direita')
+const acima = document.getElementById('acima')
+const abaixo = document.getElementById('abaixo')
+
 const broken = document.getElementById('broken')
 const ferrugem = document.getElementById('ferrugem')
 const trash = document.getElementById('trash')
@@ -59,6 +64,11 @@ function escutadores(){
     raiz.addEventListener('click', function(){ escolherCarro("raiz", 1, 3, 2) } )
     escarlate.addEventListener('click', function(){ escolherCarro("escarlate", 4, 4, 4) } )
     ssp.addEventListener('click', function(){ escolherCarro("ssp", 5, 5 ,5) } )
+
+    esquerda.addEventListener('mousedown', moveEsquerda)
+    direita.addEventListener('mousedown', moveDireita)
+    acima.addEventListener('mousedown', moveAcima)
+    abaixo.addEventListener('mousedown', moveAbaixo)
 
     iniciar.addEventListener('click', iniciarJogo )
     reiniciar.addEventListener('click', reiniciarJogo )

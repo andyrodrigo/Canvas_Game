@@ -114,7 +114,7 @@ function atualizaAreaDoJogo() {
     personagem.velocidadeX = 0;
     personagem.velocidadeY = 0;
 
-    controles()
+   // controles()
 
     fundo.velocidadeY = velPista;
     fundo.newPos();
@@ -142,9 +142,9 @@ function atualizaAreaDoJogo() {
 
 function controles(){
     if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
-        // if (areaDoJogo.keys && areaDoJogo.keys['KeyA'] && personagem.x > 0  ) {
-         //if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ) {
+    //if (areaDoJogo.keys && areaDoJogo.keys['KeyA'] && personagem.x > 0  ) {     
          personagem.velocidadeX = -curva;
+         console.log( personagem.velocidadeX )
          //personagem.image.src = "car2.png" 
      }
      if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] && personagem.x < 270) {personagem.velocidadeX = curva; }
@@ -177,4 +177,37 @@ function moveCarro(i){
 function everyinterval(n) {
     if ((areaDoJogo.frameNo / n) % 1 == 0) {return true;}
     return false;
+}
+
+function moveAcima() {
+    //alert("ok")
+    if( aceleracao == 0 && personagem.y > 450){
+        if( areaDoJogo.frameNo % 5 == 0)
+        personagem.velocidadeY = -1;
+    }else{
+        personagem.velocidadeY = -aceleracao;
+    }
+    console.log( personagem.velocidadeY )
+}
+  
+function moveAbaixo() {
+    //alert("ok")
+    personagem.velocidadeY += 1;
+}
+
+function moveEsquerda() {
+    //alert("ok")
+    personagem.velocidadeX = -curva;
+    console.log( personagem.velocidadeX )
+}
+
+function moveDireita() {
+    //alert("ok")
+    obstaculos[1].velocidadeX += 1;
+    console.log( "ok" )
+}
+
+function paraMovimento() {
+    personagem.velocidadeX = 0;
+    personagem.velocidadeY = 0;
 }
