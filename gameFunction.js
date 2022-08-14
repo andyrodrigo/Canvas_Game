@@ -69,6 +69,8 @@ function iniciarJogo() {
 
     telaInicial.style.display = "none"
     telaDoJogo.style.display = "flex"
+    Bcontroles[0].style.display = "flex"
+    Bcontroles[1].style.display = "flex"
   
     areaDoJogo.start();
 }
@@ -77,6 +79,8 @@ function voltar() {
     telaInicial.style.display = "block"
     telaDoJogo.style.display = "none"
     TelaDeBatida.style.display = "none"
+    Bcontroles[0].style.display = "none"
+    Bcontroles[1].style.display = "none"
     limparJogo()
     //alert("aqui")
     //areaDoJogo.remove()

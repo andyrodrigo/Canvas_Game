@@ -5,6 +5,8 @@ const telaDoJogo = document.getElementById('telaDoJogo')
 const telaInicial = document.getElementById('telaInicial')
 const TelaDeBatida = document.getElementById('TelaDeBatida')
 
+const Bcontroles = document.getElementsByClassName("controles")
+
 const iniciar = document.getElementById('iniciar')
 const reiniciar = document.getElementById('reiniciar')
 const outro = document.getElementById('outro')
