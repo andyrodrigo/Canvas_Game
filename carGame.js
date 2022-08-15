@@ -153,25 +153,63 @@ function controles(){
                 personagem.velocidadeY = -aceleracao;
             }
         }
-     if (areaDoJogo.keys['ArrowDown']  && personagem.y < 485 || //FREIA
-         areaDoJogo.keys['KeyS']  && personagem.y < 485) {
+        if (areaDoJogo.keys['ArrowDown']  && personagem.y < 485 || //FREIA
+            areaDoJogo.keys['KeyS']  && personagem.y < 485) {
             if( freio == 0 && personagem.y < 450){
                 if( areaDoJogo.frameNo % 5 == 0)
                 personagem.velocidadeY = 1;
             }else{
                 personagem.velocidadeY = freio;
             }    
-         }
+        }
     }
+    if ( areaDoJogo.teclas ){
+        //console.log("on")
+        if (areaDoJogo.teclas['e'] && personagem.x > 0 ){ //  ESQUERDA <-   
+            personagem.velocidadeX = -curva;
+        }
+        if( areaDoJogo.teclas["d"] && personagem.x < 270){ //  DIREITA ->
+            personagem.velocidadeX = curva;
+        }
+        if (areaDoJogo.teclas['a'] && personagem.y > 0 ) { // ACELERA
+            if( aceleracao == 0 && personagem.y > 450){
+                if( areaDoJogo.frameNo % 5 == 0)
+                personagem.velocidadeY = -1;
+            }else{
+                personagem.velocidadeY = -aceleracao;
+            }
+        }
+        if (areaDoJogo.teclas['f']  && personagem.y < 485 ) { //FREIA
+            if( freio == 0 && personagem.y < 450){
+                if( areaDoJogo.frameNo % 5 == 0)
+                personagem.velocidadeY = 1;
+            }else{
+                personagem.velocidadeY = freio;
+            }    
+        }
+    }
+
 }
 
-function pressionaTecla(e){
+function pressionarTecla(e){
     areaDoJogo.keys = (areaDoJogo.keys || []);
     areaDoJogo.keys[e.code] = true;
 }
 
-function soltaTecla(e){
+function soltarTecla(e){
     areaDoJogo.keys[e.code] = false;
+}
+
+function pressionarBotao( dir ){
+    console.log( dir )
+    areaDoJogo.teclas = (areaDoJogo.teclas || []);
+    areaDoJogo.teclas[dir] = true;
+}
+
+function soltarBotao( dir ){
+    console.log( dir)
+    areaDoJogo.teclas[dir] = false;
+
 }
 
 
