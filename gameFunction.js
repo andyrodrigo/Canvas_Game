@@ -47,7 +47,8 @@ function escolherCarro( nomeDoCarro , a, f, c ){
     }
 
     for( i=0 ; i<10; i++){
-        document.getElementById( veiculos[i] ).style.backgroundColor = "rgb(223, 225, 228)"
+        document.getElementById( veiculos[i] ).style.backgroundColor = "unset"
+        //document.getElementById( veiculos[i] ).style.backgroundImage = "linear-gradient(315deg, #6782B4 0%, #B1BFD8 74%)"
     }
     document.getElementById(nomeDoCarro).style.backgroundColor = "aliceblue"
     iniciar.style.display = "block"

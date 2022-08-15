@@ -19,7 +19,7 @@
 main{
     min-width: 100vw;
     min-height: 100vh;
-    background-color: rgb(223, 225, 228);
+    background-image: linear-gradient(315deg, #6782B4 0%, #B1BFD8 74%);
 }
 
 #telaDoJogo{
@@ -85,13 +85,12 @@ canvas {
 .controles{
     display: none;
     flex-direction: column;
-    background-color: aquamarine;
     justify-content: center;
 }
 
 
 .Bcontrole{
-    background-image: linear-gradient(315deg, #000000 0%, #414141 74%);
+    background-image: linear-gradient(315deg, #000000 0%, #414141 74%); 
     box-shadow:0 3px 0 black;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -113,12 +112,12 @@ canvas {
 }
 
 #escolhaP{
-    background-color: crimson;
+    background-image: linear-gradient(315deg, #A71D31 0%, #3F0D12 74%);
 }
 
 #iniciar{
     display: none;
-    background-color:goldenrod;
+    background-image: linear-gradient(315deg, #F53803 0%, #F5D020 74%);
     cursor: pointer;
 }
 
@@ -147,12 +146,10 @@ canvas {
     text-align: center;
     cursor: pointer;
     border-radius: 5px;
-    border: 1px solid rgb(223, 225, 228);
 }
 
 .blocoCarro:hover{
     background-color:aliceblue;
-    border: 1px solid black;
 }
 
 .blocoCarro > img{
