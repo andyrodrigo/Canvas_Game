@@ -56,7 +56,6 @@ function escolherCarro( nomeDoCarro , a, f, c ){
 
 function iniciarJogo() {
     
-    //alert(imagemCarro)
     personagem = new component(30, 30, imagemCarro, 185, 450, "image"); //tamX, tamY, imagem, posX, posY
     //personagem = new component(30, 30, "red", 10, 120);
 
@@ -101,3 +100,19 @@ function limparJogo(){
     intervalo = 40;
     nivel = 1
 }
+
+window.onload = function() {
+    var canvaD = canvaDireita.getContext("2d");
+    var canvaE = canvaEsquerda.getContext("2d");
+    var canvaF = canvaFreio.getContext("2d");
+    var canvaA = canvaAcelerador.getContext("2d");
+    var imgD = document.getElementById("setaDireita");
+    var imgE = document.getElementById("setaEsquerda");
+    var imgF = document.getElementById("freio");
+    var imgA = document.getElementById("acelerador");
+
+    canvaD.drawImage(imgD, 0, 0);
+    canvaE.drawImage(imgE, 0, 0);
+    canvaF.drawImage(imgF, 0, 0);
+    canvaA.drawImage(imgA, 0, 0);
+  };

@@ -100,6 +100,10 @@ function atualizaAreaDoJogo() {
           areaDoJogo.stop();
           somDirigindo.pause();
           TelaDeBatida.style.display = "flex"
+          if( pontos > pontosRecorde){
+            pontosRecorde = pontos
+            recorde.innerText = pontos;
+          }
           return;
         }
     }

@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="imagens/favicon.png">
 
-    <title> Rodovia Maluca </title>
+    <title> Loucos da Rodovia </title>
 
 </head>
 
@@ -18,10 +19,12 @@
 
         <div class="controles">
             <button id="esquerda" class="Bcontrole" onmousedown="pressionarBotao('e')" onmouseup="soltarBotao('e')" ontouchstart="pressionarBotao('e')" ontouchend="soltarBotao('e')" >
-                <img id="setaEsquerda" class="imagemDeTecla" src="imagens/seta.png" alt="seta para a esquerda">
+                <canvas id="canvaEsquerda" class="canvaDeTecla"></canvas>
+                <img id="setaEsquerda" class="imagemDeTecla" src="imagens/setaE.png" alt="seta para a esquerda">
             </button>
             <button id="abaixo" class="Bcontrole" onmousedown="pressionarBotao('f')" onmouseup="soltarBotao('f')" ontouchstart="pressionarBotao('f')" ontouchend="soltarBotao('f')">
-                <img id="freio" class="imagemDeTecla" src="imagens/freio.png" alt="freio">
+                <canvas id="canvaFreio" class="canvaDeTecla"></canvas>
+                <img id="freio" class="imagemDeTecla" src="imagens/frei.png" alt="freio">
             </button>
         </div>
 
@@ -36,14 +39,22 @@
 
         <div class="controles">
             <button id="direita" class="Bcontrole" onmousedown="pressionarBotao('d')" onmouseup="soltarBotao('d')" ontouchstart="pressionarBotao('d')" ontouchend="soltarBotao('d')">
-                <img id="setaDireita" class="imagemDeTecla" src="imagens/seta.png" alt="seta para a direita">
+                <canvas id="canvaDireita" class="canvaDeTecla"></canvas>
+                <img id="setaDireita" class="imagemDeTecla" src="imagens/setaD.png" alt="seta para a direita">
             </button>
             <button  id="acima" class="Bcontrole" onmousedown="pressionarBotao('a')" onmouseup="soltarBotao('a')" ontouchstart="pressionarBotao('a')" ontouchend="soltarBotao('a')">
-                <img id="acelerador" class="imagemDeTecla" src="imagens/acelerador.png" alt="acelerador">
+                <canvas id="canvaAcelerador" class="canvaDeTecla"></canvas>
+                <img id="acelerador" class="imagemDeTecla" src="imagens/acel.png" alt="acelerador">
             </button>
         </div>
 
         <div id="telaInicial" >
+
+            <p id="titulo" class="radios">
+                LOUCOS DA RODOVIA
+                <br>      
+               <span>RECORDE: </span> <span id="recorde">0</span>
+            </p>
 
             <p id="escolhaP" class="radios">ESCOLHA SEU CARRO</p>
 

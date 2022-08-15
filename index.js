@@ -6,6 +6,7 @@ const telaInicial = document.getElementById('telaInicial')
 const TelaDeBatida = document.getElementById('TelaDeBatida')
 
 const Bcontroles = document.getElementsByClassName("controles")
+const recorde = document.getElementById("recorde")
 
 const iniciar = document.getElementById('iniciar')
 const reiniciar = document.getElementById('reiniciar')
@@ -15,6 +16,11 @@ const esquerda = document.getElementById('esquerda')
 const direita = document.getElementById('direita')
 const acima = document.getElementById('acima')
 const abaixo = document.getElementById('abaixo')
+
+const canvaDireita = document.getElementById('canvaDireita')
+const canvaEsquerda = document.getElementById('canvaEsquerda')
+const canvaFreio = document.getElementById('canvaFreio')
+const canvaAcelerador = document.getElementById('canvaAcelerador')
 
 const broken = document.getElementById('broken')
 const ferrugem = document.getElementById('ferrugem')
@@ -34,6 +40,7 @@ let movimento = 1;
 var nivel = 1;
 var pontuacao;
 var pontos = 0;
+var pontosRecorde = 0;
 var veloCarros = 1;
 var velPista = 10;
 var fundo;
@@ -66,14 +73,6 @@ function escutadores(){
     raiz.addEventListener('click', function(){ escolherCarro("raiz", 1, 3, 2) } )
     escarlate.addEventListener('click', function(){ escolherCarro("escarlate", 4, 4, 4) } )
     ssp.addEventListener('click', function(){ escolherCarro("ssp", 5, 5 ,5) } )
-
-    //window.addEventListener('mouseover', pressionarBotao )
-    //window.addEventListener('mouseleave', soltarBotao )
-    /*
-    esquerda.addEventListener('mousedown', moveEsquerda)
-    direita.addEventListener('mousedown', moveDireita)
-    acima.addEventListener('mousedown', moveAcima)
-    abaixo.addEventListener('mousedown', moveAbaixo)*/
 
     window.addEventListener('keydown', pressionarTecla )
     window.addEventListener('keyup', soltarTecla )
