@@ -47,7 +47,7 @@ function niveis(){
             nivel_6();
             break;
         default:
-            nivel_1();
+            nivel_6();
 
     }
     /*

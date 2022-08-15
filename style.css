@@ -203,7 +203,9 @@ span{
 }
 
 .yellow{
-    color:darkorange;
+    color: white;
+    
+    /*color:darkorange;*/
 }
 
 .gold{
@@ -211,5 +213,6 @@ span{
 }
 
 .golden{
-    color: goldenrod;
+    color: yellow;
+    /*color: goldenrod;*/
 }

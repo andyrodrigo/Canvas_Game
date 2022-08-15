@@ -126,7 +126,7 @@ function atualizaAreaDoJogo() {
         pontos +=10;
         if( pontos % 100 == 0){       
             nivel += 1;
-            console.log(nivel)
+            console.log("Nível: " + nivel)
         }
     }
 
