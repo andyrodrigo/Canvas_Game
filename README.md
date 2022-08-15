@@ -61,13 +61,13 @@ e níveis que vão mudando a velocidade dos carros em tela, a quantidade de apar
 * [X] Funções das telas
 * [X] Introdução de Áudio
 * [X] Controle de Níveis
+* [x] Opção de controles na tela e nas tecllas: a w s d
 * [ ] Pontuação Recorde
 * [ ] Mostrador de Nível
 * [ ] Desbloqueio de novos veículos
 * [ ] Níveis diversificados
 * [ ] Diferentes Modos de Jogo
 * [ ] Carro Customizado
-* [ ] Opção de controles na tela e nas tecllas: a w s d
 * [ ] Opção Full Screen
 * [ ] Instruções
 * [ ] Melhoria de Layout
