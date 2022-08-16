@@ -64,6 +64,7 @@ canvas {
 }
 
 #TelaDeBatida{
+    flex-direction: column;
     position: absolute;
     display: none;
     flex-wrap: wrap;
@@ -136,6 +137,7 @@ canvas {
     height: 50px;
     border-radius: 10px;
     border: 2px solid black;
+    color: white;
 }
 
 .Bcontrole:active{

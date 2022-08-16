@@ -13,12 +13,14 @@ const recorde = document.getElementById("recorde")
 
 const iniciar = document.getElementById('iniciar')
 const reiniciar = document.getElementById('reiniciar')
+const retomar = document.getElementById('retomar')
 const outro = document.getElementById('outro')
 
 const esquerda = document.getElementById('esquerda')
 const direita = document.getElementById('direita')
 const acima = document.getElementById('acima')
 const abaixo = document.getElementById('abaixo')
+const pause = document.getElementById('pause')
 
 const canvaDireita = document.getElementById('canvaDireita')
 const canvaEsquerda = document.getElementById('canvaEsquerda')
@@ -36,30 +38,39 @@ const raiz = document.getElementById('raiz')
 const escarlate = document.getElementById('escarlate')
 const ssp = document.getElementById('ssp')
 
-//Variáveis do Jogo
+//Variáveis do Jogo-----------------------
+//Carro do Jogador
 var personagem;
-var obstaculos = [];
-let movimento = 1;
+var veiculo =  "broken"
+var imagemCarro = "imagens/carroBroken.png"
+let aceleracao = 1;
+let freio = 1;
+let curva = 1;
+var veiculos = ["broken", "ferrugem", "trash", "dourado", "sombra", "oceano", "nitro", "raiz", "escarlate", "ssp"]
+//Niveis e Pontos
 var nivel = 1;
 var mudaNivel = 100;
 var pontuacao;
 var pontos = 0;
 var pontosRecorde = 0;
-var veloCarros = 1;
-var velPista = 10;
-var desvios = false
-var reset = true
+//Cenário
 var fundo;
+var velPista = 10;
+var reset = true
+var pausa = false
+var fimDeJogo = false
+var intervalo = 40;
+//Sons
 var somColisao;
+var somBuzina;
 var somLigando = new Audio("audio/ligando.mp3")
 var somDirigindo;
-var intervalo = 40;
-var veiculo =  "roxo"
-var imagemCarro = "imagens/carroTrash.png"
-let aceleracao = 1;
-let freio = 1;
-let curva = 1;
-var veiculos = ["broken", "ferrugem", "trash", "dourado", "sombra", "oceano", "nitro", "raiz", "escarlate", "ssp"]
+var somSirenes = new Audio("audio/sirenes.mp3")
+//Veiculos da Pista
+var obstaculos = [];
+let movimento = 1;
+var veloCarros = 1;
+var desvios = false
 var imagensCarros = ["imagens/outroCarroAmarelo.png", "imagens/outroCarroAzul.png",
                     "imagens/outroCarroBranco.png", "imagens/outroCarroCinza.png", "imagens/outroCarroMarrom.png",
                     "imagens/outroCarroPreto.png", "imagens/outroCarroRosa.png", "imagens/outroCarroRoxo.png",
@@ -82,11 +93,13 @@ function escutadores(){
 
     window.addEventListener('keydown', pressionarTecla )
     window.addEventListener('keyup', soltarTecla )
+    pause.addEventListener('click', pausar )
+    buzina.addEventListener('click', buzinar )
 
     iniciar.addEventListener('click', iniciarJogo )
     reiniciar.addEventListener('click', reiniciarJogo )
+    retomar.addEventListener('click', retomarJogo )
     outro.addEventListener('click', voltar )
-
 }
 
 //--------------------------------------------------------------------------------------

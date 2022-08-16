@@ -1,8 +1,10 @@
+//Funções dentro do Jogo
+
 
 var areaDoJogo = {
 
     canvas: document.createElement("canvas"),
-
+    //Cria a tela canvas com o jogo
     start : function() {
 
         this.canvas.width = 300;
@@ -15,24 +17,25 @@ var areaDoJogo = {
         this.interval = setInterval( atualizaAreaDoJogo, 20 );
 
     },
+    //Limpa a tela para redesenhar
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     },
+    //Continua o jogo
+    continue : function() {
+        this.interval = setInterval( atualizaAreaDoJogo, 20 );
+    },
+    //Paralisa o jogo
     stop : function() {
         clearInterval(this.interval);
     }
 
 }
 
+//Criação de Componente da tela
 function component( width, height, objeto, x, y, type) {
 
     this.type = type;
-
-    if (type == "image" || type == "background") {
-        this.image = new Image();
-        this.image.src = objeto;
-    }
-
     this.width = width;
     this.height = height;
     this.velocidadeX = 0;
@@ -40,15 +43,21 @@ function component( width, height, objeto, x, y, type) {
     this.x = x;
     this.y = y;
 
+    if (type == "image" || type == "background") {
+        this.image = new Image();
+        this.image.src = objeto;
+    }
+
+    //Atualização dos componentes
     this.update = function(){
 
         ctx = areaDoJogo.context;
 
-        if (this.type == "text") {
+        if (this.type == "text") { //Textos em tela
             ctx.font = this.width + " " + this.height;
             ctx.fillStyle = objeto;
             ctx.fillText(this.text, this.x, this.y);
-        } else if (type == "image" || type == "background" ) {
+        } else if (type == "image" || type == "background" ) { //Imagens em tela
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
             
             if ( type == "background"){ //loop
@@ -60,10 +69,9 @@ function component( width, height, objeto, x, y, type) {
         }
     }
 
-    
+    //Muda posição do objetos
     this.newPos = function() {
         this.x += this.velocidadeX;
-        //console.log(this.velocidadeX)
         this.y += this.velocidadeY;
         if (this.type == "background") {
             if (this.y == this.height ) {
@@ -72,6 +80,7 @@ function component( width, height, objeto, x, y, type) {
         }
     }
 
+    //Indicador de colisão
     this.colisaoCom = function( outroObjeto) {
         var myleft = this.x + 2;
         var myright = this.x + (this.width - 2);
@@ -92,10 +101,12 @@ function component( width, height, objeto, x, y, type) {
       }
 }
 
+//Redesenha a tela a cada frame
 function atualizaAreaDoJogo() {
-
+    //Verifica possível Colisão
     for (i = 0; i < obstaculos.length; i += 1) {
         if (personagem.colisaoCom(obstaculos[i])) {
+          fimDeJogo = true
           somColisao.play();
           areaDoJogo.stop();
           somDirigindo.pause();
@@ -108,32 +119,34 @@ function atualizaAreaDoJogo() {
         }
     }
 
+    //Limpa tela e movimento
     areaDoJogo.clear();
     personagem.velocidadeX = 0;
     personagem.velocidadeY = 0;
-
+    //Verifica controles (teclado ou botões)
     controles()
-
+    //atualiza pista
     fundo.velocidadeY = velPista;
     fundo.newPos();
     fundo.update();
-
+    //aumenta os frames
     areaDoJogo.frameNo += 1;
-
+    //Monta nível atual
     niveis()
-
+    //Soma pontos a cada 100 frames
     if( areaDoJogo.frameNo % 100 == 0){
         pontos +=10;
     }
+    //Troca de nível de acordo com a condição de mudança
     if( pontos == mudaNivel){       
         nivel += 1;
         reset = true
         //console.log("Nível: " + nivel)
     }
-
-    pontuacao.text = "Pontos: " + pontos;
+    //desenha texto com pontuação
+    pontuacao.text = "PONTOS: " + pontos;
     pontuacao.update();
-
+    //atualiza carro do jogador
     personagem.newPos();
     personagem.update();
 
@@ -143,15 +156,25 @@ function controles(){
     if (areaDoJogo.keys){ 
         if (areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  || //  ESQUERDA <-
             areaDoJogo.keys['KeyA'] && personagem.x > 0  ) {     
-            personagem.velocidadeX = -curva;
+                if( curva == 0){
+                    if( areaDoJogo.frameNo % 5 == 0)
+                    personagem.velocidadeX = -1;
+                }else{
+                    personagem.velocidadeX = -curva;
+                } 
         }
         if (areaDoJogo.keys['ArrowRight'] && personagem.x < 270 || //  DIREITA ->
             areaDoJogo.keys['KeyD'] && personagem.x < 270  ) {
-            personagem.velocidadeX = curva;
+                if( curva == 0){
+                    if( areaDoJogo.frameNo % 5 == 0)
+                    personagem.velocidadeX = 1;
+                }else{
+                    personagem.velocidadeX = curva;
+                } 
         }
         if (areaDoJogo.keys['ArrowUp'] && personagem.y > 0 || // ACELERA
             areaDoJogo.keys['KeyW'] && personagem.y > 0) { 
-            if( aceleracao == 0 && personagem.y > 450){
+            if( aceleracao == 0 ){
                 if( areaDoJogo.frameNo % 5 == 0)
                 personagem.velocidadeY = -1;
             }else{
@@ -160,7 +183,7 @@ function controles(){
         }
         if (areaDoJogo.keys['ArrowDown']  && personagem.y < 485 || //FREIA
             areaDoJogo.keys['KeyS']  && personagem.y < 485) {
-            if( freio == 0 && personagem.y < 450){
+            if( freio == 0){
                 if( areaDoJogo.frameNo % 5 == 0)
                 personagem.velocidadeY = 1;
             }else{
@@ -171,13 +194,23 @@ function controles(){
     if ( areaDoJogo.teclas ){
         //console.log("on")
         if (areaDoJogo.teclas['e'] && personagem.x > 0 ){ //  ESQUERDA <-   
-            personagem.velocidadeX = -curva;
+            if( curva == 0){
+                if( areaDoJogo.frameNo % 5 == 0)
+                personagem.velocidadeX = -1;
+            }else{
+                personagem.velocidadeX = -curva;
+            } 
         }
         if( areaDoJogo.teclas["d"] && personagem.x < 270){ //  DIREITA ->
-            personagem.velocidadeX = curva;
+            if( curva == 0){
+                if( areaDoJogo.frameNo % 5 == 0)
+                personagem.velocidadeX = 1;
+            }else{
+                personagem.velocidadeX = curva;
+            }  
         }
         if (areaDoJogo.teclas['a'] && personagem.y > 0 ) { // ACELERA
-            if( aceleracao == 0 && personagem.y > 450){
+            if( aceleracao == 0 ){
                 if( areaDoJogo.frameNo % 5 == 0)
                 personagem.velocidadeY = -1;
             }else{
@@ -185,12 +218,12 @@ function controles(){
             }
         }
         if (areaDoJogo.teclas['f']  && personagem.y < 485 ) { //FREIA
-            if( freio == 0 && personagem.y < 450){
+            if( freio == 0){
                 if( areaDoJogo.frameNo % 5 == 0)
                 personagem.velocidadeY = 1;
             }else{
                 personagem.velocidadeY = freio;
-            }    
+            }      
         }
     }
 
