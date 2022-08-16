@@ -56,7 +56,7 @@ function escolherCarro( nomeDoCarro , a, f, c ){
 
 function iniciarJogo() {
     
-    personagem = new component(30, 30, imagemCarro, 185, 450, "image"); //tamX, tamY, imagem, posX, posY
+    personagem = new component(30, 30, imagemCarro, 135, 250, "image"); //tamX, tamY, imagem, posX, posY
     //personagem = new component(30, 30, "red", 10, 120);
 
     somColisao = new Audio("audio/colisao.mp3")
@@ -71,6 +71,7 @@ function iniciarJogo() {
     telaDoJogo.style.display = "flex"
     Bcontroles[0].style.display = "flex"
     Bcontroles[1].style.display = "flex"
+    controleDeNiveis.style.display = "flex"
   
     areaDoJogo.start();
 }
@@ -81,6 +82,7 @@ function voltar() {
     TelaDeBatida.style.display = "none"
     Bcontroles[0].style.display = "none"
     Bcontroles[1].style.display = "none"
+    controleDeNiveis.style.display = "none"
     limparJogo()
     //alert("aqui")
     //areaDoJogo.remove()
@@ -99,6 +101,8 @@ function limparJogo(){
     velPista = 10;
     intervalo = 40;
     nivel = 1
+    mudaNivel = 100
+    reset = true
 }
 
 window.onload = function() {

@@ -17,36 +17,50 @@
 
     <main class="flex">
 
-        <div class="controles">
-            <button id="esquerda" class="Bcontrole" onmousedown="pressionarBotao('e')" onmouseup="soltarBotao('e')" ontouchstart="pressionarBotao('e')" ontouchend="soltarBotao('e')" >
-                <canvas id="canvaEsquerda" class="canvaDeTecla"></canvas>
-                <img id="setaEsquerda" class="imagemDeTecla" src="imagens/setaE.png" alt="seta para a esquerda">
-            </button>
-            <button id="abaixo" class="Bcontrole" onmousedown="pressionarBotao('f')" onmouseup="soltarBotao('f')" ontouchstart="pressionarBotao('f')" ontouchend="soltarBotao('f')">
-                <canvas id="canvaFreio" class="canvaDeTecla"></canvas>
-                <img id="freio" class="imagemDeTecla" src="imagens/frei.png" alt="freio">
-            </button>
-        </div>
+        <section id="telaControle" class="flex">
 
-        <div id="telaDoJogo" >
-
-            <div id="TelaDeBatida">
-                <p id="reiniciar" class="bTransparente">REINICIAR</p>
-                <p id="outro" class="bTransparente">OUTRO CARRO</p>
+            <div id="controleDeNiveis">
+                <p id="nivelAtual">NIVEL 1 -&nbsp</p> <span id="nomeNivel">Carros Lentos</span> 
             </div>
-  
-        </div>
 
-        <div class="controles">
-            <button id="direita" class="Bcontrole" onmousedown="pressionarBotao('d')" onmouseup="soltarBotao('d')" ontouchstart="pressionarBotao('d')" ontouchend="soltarBotao('d')">
-                <canvas id="canvaDireita" class="canvaDeTecla"></canvas>
-                <img id="setaDireita" class="imagemDeTecla" src="imagens/setaD.png" alt="seta para a direita">
-            </button>
-            <button  id="acima" class="Bcontrole" onmousedown="pressionarBotao('a')" onmouseup="soltarBotao('a')" ontouchstart="pressionarBotao('a')" ontouchend="soltarBotao('a')">
-                <canvas id="canvaAcelerador" class="canvaDeTecla"></canvas>
-                <img id="acelerador" class="imagemDeTecla" src="imagens/acel.png" alt="acelerador">
-            </button>
-        </div>
+            <div class="flex">
+
+                <div class="controles">
+                    <button id="esquerda" class="Bcontrole" onmousedown="pressionarBotao('e')" onmouseup="soltarBotao('e')" ontouchstart="pressionarBotao('e')" ontouchend="soltarBotao('e')" >
+                        <canvas id="canvaEsquerda" class="canvaDeTecla"></canvas>
+                        <img id="setaEsquerda" class="imagemDeTecla" src="imagens/setaE.png" alt="seta para a esquerda">
+                    </button>
+                    <button id="abaixo" class="Bcontrole" onmousedown="pressionarBotao('f')" onmouseup="soltarBotao('f')" ontouchstart="pressionarBotao('f')" ontouchend="soltarBotao('f')">
+                        <canvas id="canvaFreio" class="canvaDeTecla"></canvas>
+                        <img id="freio" class="imagemDeTecla" src="imagens/frei.png" alt="freio">
+                    </button>
+                </div>
+        
+                <div id="telaDoJogo" >
+        
+                    <div id="TelaDeBatida">
+                        <p id="reiniciar" class="bTransparente">REINICIAR</p>
+                        <p id="outro" class="bTransparente">OUTRO CARRO</p>
+                    </div>
+          
+                </div>
+        
+                <div class="controles">
+                    <button id="direita" class="Bcontrole" onmousedown="pressionarBotao('d')" onmouseup="soltarBotao('d')" ontouchstart="pressionarBotao('d')" ontouchend="soltarBotao('d')">
+                        <canvas id="canvaDireita" class="canvaDeTecla"></canvas>
+                        <img id="setaDireita" class="imagemDeTecla" src="imagens/setaD.png" alt="seta para a direita">
+                    </button>
+                    <button  id="acima" class="Bcontrole" onmousedown="pressionarBotao('a')" onmouseup="soltarBotao('a')" ontouchstart="pressionarBotao('a')" ontouchend="soltarBotao('a')">
+                        <canvas id="canvaAcelerador" class="canvaDeTecla"></canvas>
+                        <img id="acelerador" class="imagemDeTecla" src="imagens/acel.png" alt="acelerador">
+                    </button>
+                </div>
+    
+            </div>
+
+        </section>
+
+
 
         <div id="telaInicial" >
 

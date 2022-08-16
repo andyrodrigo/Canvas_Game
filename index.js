@@ -4,6 +4,9 @@
 const telaDoJogo = document.getElementById('telaDoJogo')
 const telaInicial = document.getElementById('telaInicial')
 const TelaDeBatida = document.getElementById('TelaDeBatida')
+const controleDeNiveis = document.getElementById('controleDeNiveis')
+const nivelAtual = document.getElementById('nivelAtual')
+const nomeNivel = document.getElementById('nomeNivel')
 
 const Bcontroles = document.getElementsByClassName("controles")
 const recorde = document.getElementById("recorde")
@@ -38,11 +41,14 @@ var personagem;
 var obstaculos = [];
 let movimento = 1;
 var nivel = 1;
+var mudaNivel = 100;
 var pontuacao;
 var pontos = 0;
 var pontosRecorde = 0;
 var veloCarros = 1;
 var velPista = 10;
+var desvios = false
+var reset = true
 var fundo;
 var somColisao;
 var somLigando = new Audio("audio/ligando.mp3")

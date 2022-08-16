@@ -124,10 +124,11 @@ function atualizaAreaDoJogo() {
 
     if( areaDoJogo.frameNo % 100 == 0){
         pontos +=10;
-        if( pontos % 100 == 0){       
-            nivel += 1;
-            console.log("Nível: " + nivel)
-        }
+    }
+    if( pontos == mudaNivel){       
+        nivel += 1;
+        reset = true
+        //console.log("Nível: " + nivel)
     }
 
     pontuacao.text = "Pontos: " + pontos;
@@ -205,13 +206,13 @@ function soltarTecla(e){
 }
 
 function pressionarBotao( dir ){
-    console.log( dir )
+    //console.log( dir )
     areaDoJogo.teclas = (areaDoJogo.teclas || []);
     areaDoJogo.teclas[dir] = true;
 }
 
 function soltarBotao( dir ){
-    console.log( dir)
+    //console.log( dir)
     areaDoJogo.teclas[dir] = false;
 
 }
@@ -251,10 +252,14 @@ function controles(){
 
 function moveCarro(i){
     movimento = Math.floor( Math.random()*3) - 1
-    //console.log(movimento)
     if( areaDoJogo.frameNo % 50 == 0){
         obstaculos[i].velocidadeX = movimento;     
     }
+}
+
+function moveCarroSempre(i){
+    movimento = Math.floor( Math.random()*3) - 1
+    obstaculos[i].velocidadeX = movimento;
 }
 
 function everyinterval(n) {
@@ -282,7 +287,7 @@ function moveAbaixo() {
     }else{
         personagem.velocidadeY = freio;
     }
-    console.log( "pressionado" )
+    //console.log( "pressionado" )
     personagem.newPos();
 }
 
