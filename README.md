@@ -1,10 +1,12 @@
 # Car_Game
 
+<img src="/imagens/Car_Game.png"/>
+
 ## Sobre o Projeto:
 
-> Este projeto é um jogo de carros criado inteiramente dentro do elemento Canvas de JavaScript. Basicamente, você precisa desviar dos outros carros da pista
+> Este projeto é um jogo de carros criado inteiramente dentro do elemento Canvas de JavaScript. Basicamente, você precisa desviar dos outros veículos da pista
 enquanto se move em todas as direções. Existem 10 carros com diferentes configurações que modificam a experiência e dificuldade do jogo. Ele possui pontuação
-e níveis que vão mudando a velocidade dos carros em tela, a quantidade de aparições e movimentos.
+e níveis que vão mudando os tipos de veículos, a velocidade deles em tela, a quantidade de aparições e movimentação, trazendo a cada nível um diferente desafio.
 
 <hr>
 
@@ -21,8 +23,8 @@ e níveis que vão mudando a velocidade dos carros em tela, a quantidade de apar
 > - Curva (É a rapidez com que o veículo se move para os lados)
 
 > Veículos:
-> - **Broken** - Carro Cinza e creio de avarias. *Aceleração: Péssima / Freio: Quebrado / Curva: Boa*
-> - **Ferrugem** - Carro Vermelho-Alaranjado com lataria enferrujada. *Aceleração: Boa / Freio: Péssimo / Curva: Ótima*
+> - **Broken** - Carro Cinza e creio de avarias. *Aceleração: Péssima / Freio: Péssimo / Curva: Boa*
+> - **Ferrugem** - Carro Amarronzado com lataria enferrujada. *Aceleração: Boa / Freio: Péssimo / Curva: Ótima*
 > - **Trash** - Carro Esverdeado com lataria desgastada. *Aceleração: Péssima / Freio: Bom / Curva: Ótima*
 > - **Dourado** - Carro Amarelo com lataria arranhada. *Aceleração: Boa / Freio: Bom / Curva: Boa*
 > - **Sombra** - Carro Bem Preto . *Aceleração: Ótimo / Freio: Ótimo / Curva: Ótima*
@@ -32,7 +34,7 @@ e níveis que vão mudando a velocidade dos carros em tela, a quantidade de apar
 > - **Escarlate** - Carro Vermelho. *Aceleração: Impressionante / Freio: Impressionante / Curva: Impressionante*
 > - **Super Special Police (SSP)** - Carro Policial. *Aceleração: Impressionante / Freio: Impressionante / Curva: Impressionante*
 
-<img src="/imagens/TelaISelecao.png"/>
+<img src="/imagens/TelaSelecao.png"/>
 
 > ### Tela do Jogo:
 > O jogo se passa inteiramente dentro de um elemento Canvas. Ele Mostra a Pontuação enquanto você desvia dos veículos.
@@ -40,10 +42,10 @@ e níveis que vão mudando a velocidade dos carros em tela, a quantidade de apar
 <img src="/imagens/TelaJogo.png"/>
 
 > ### Controles:
-> Para controlar, o usuário deve ustilizar as teclas de direções do teclado:
-> Acelerar: Seta para cima
-> Freiar: Seta para baixo
-> Curvas: Setas esquerda e Direita
+> Para controlar, o usuário deve utilizar as teclas de direções do teclado ou os botões da tela:
+> **Acelerar**: Seta para cima, tecla W ou botão com imagem de um acelerador.
+> **Freiar**: Seta para baixo, tecla S ou botão com imagem de freio.
+> **Curvas**: Setas esquerda e Direita, teclas A e D ou botões com imagens de setas.
 
 ## Recursos:
 
@@ -61,18 +63,18 @@ e níveis que vão mudando a velocidade dos carros em tela, a quantidade de apar
 * [X] Funções das telas
 * [X] Introdução de Áudio
 * [X] Controle de Níveis
-* [x] Opção de controles na tela e nas tecllas: a w s d
-* [ ] Pontuação Recorde
-* [ ] Mostrador de Nível
+* [x] Opção de controles na tela e nas teclas: a w s d
+* [X] Pontuação Recorde
+* [X] Mostrador de Nível
 * [ ] Desbloqueio de novos veículos
-* [ ] Níveis diversificados
+* [X] Níveis diversificados
 * [ ] Diferentes Modos de Jogo
 * [ ] Carro Customizado
 * [ ] Opção Full Screen
 * [ ] Instruções
 * [ ] Melhoria de Layout
-* [ ] Botão de Pausa
-* [ ] Buzina e Sirene
+* [X] Botão de Pausa
+* [X] Buzina e Sirene
 * [ ] Mudar gráficos ao freiar (luz)
 
 
