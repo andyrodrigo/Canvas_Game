@@ -13,7 +13,46 @@
 
 <body >
 
-    
+    <div id="telaComoJogar">
+        <div id="sobre" class="flex">
+            <button id="fechar" onclick="fechar()" >FECHAR</button>
+            <br>
+            <P class="golden">SOBRE:</P>
+            <br>
+            <p>Cruze a maior rodovia do país em alta velocidade desviando dos outros veículos </p>
+            <p> nos eventos mais aleatórios desta BR maluca.</p>
+            <p>Quanto mais tempo você passar sem bater, mais pontos você acumula.</p>
+            <br>
+            <p class="golden">CONTROLES:</p> 
+            <br>
+            <div > <p>ACELERAR: <span class="exp">Seta para <strong>cima</strong> do teclado ou tecla W ou o botão de acelerador na tela.</span> </p></div>
+            <div > <p>FREIAR: <span class="exp">Seta para baixo do teclado ou tecla S ou o botão de freio na tela.</span> </p> </div>
+            <div > <p>MOVER-SE: <span class="exp">Setas para os lados do teclado ou teclas A e D ou o botões de direção na tela.</span> </p> </div>
+            <br>
+            <p class="golden">NOVOS CARROS:</p>
+            <br>
+            <p>Quanto mais pontos você tiver, mais carros você desbloqueia.</p>
+            <p>Cada carro tem sua própria configuração, mudando a jogabilidade.</p>
+            <br>
+            <p class="golden">NÍVEIS:</p>
+            <br>
+            <p>A medida que você cruza a rodovia, os níveis vão mudando, aumentando o desafio</p>
+            <p>Cada nível tem seu próprio nome até que você chegue ao nível final "Ad Infinitum"</p>
+            <br>
+            <p class="golden">EXTRA:</p>
+            <br>
+            <p>Existe a opção de RETOMAR ao bater o veículo!</p>
+            <p>Esta opção só existe para que você conheça os níveis seguintes, caso colida demais.</p>
+            <p>Entretanto, é uma opção temporária e Ela posiciona o carro no meio novamente, ou seja...</p>
+            <p> se tiver um outro carro no centro, ele vai colidir infinitamente e você precisará reiniciar de qualquer forma.</p>
+            <p> Mas vale a tentativa retomar a estrada e não perder seus pontos e progresso.</p>
+
+        </div>
+        
+        
+        
+
+    </div>
 
     <main class="flex">
 
@@ -34,7 +73,7 @@
                         <canvas id="canvaFreio" class="canvaDeTecla"></canvas>
                         <img id="freio" class="imagemDeTecla" src="imagens/frei.png" alt="freio">
                     </button>
-                    <button  id="buzina" class="Bcontrole">Buzina</button>
+                    <button  id="buzina" class="Bcontrole" ontouchstart="buzinar()">Buzina</button>
                 </div>
         
                 <div id="telaDoJogo" >
@@ -56,23 +95,21 @@
                         <canvas id="canvaAcelerador" class="canvaDeTecla"></canvas>
                         <img id="acelerador" class="imagemDeTecla" src="imagens/acel.png" alt="acelerador">
                     </button>
-                    <button  id="pause" class="Bcontrole">pausa</button>
+                    <button  id="pause" class="Bcontrole" ontouchstart="pausar()">pausa</button>
                 </div>
     
             </div>
 
         </section>
 
-
-
         <div id="telaInicial" >
 
             
-        <p id="titulo" class="radios">
-            LOUCOS DA RODOVIA
-            <br>      
-           <span>RECORDE: </span> <span id="recorde">0</span>
-        </p>
+            <p id="titulo" class="radios">
+                LOUCOS DA RODOVIA
+                <br>      
+            <span>RECORDE: </span> <span id="recorde">0</span> <span id="instrucoes" onclick="abrir()">COMO JOGAR?</span>
+            </p>
 
             <p id="escolhaP" class="radios">ESCOLHA SEU CARRO</p>
 
@@ -80,102 +117,123 @@
 
             <div id="selecao" class="flex">
 
-                <div id="broken" class="blocoCarro">
+                <div id="broken" class="blocoCarro aberto">
                     <p class="nomeCarro"> BROKEN </p>
                     <img src="imagens/CarroBrokenEscolha.png" alt="Carro Trash">
-                    <p>Aceleração: <span class="red">péssima</span> </p>
-                    <p>Curva: <span class="blue">boa</span> </p>
-                    <p>Freio: <span class="red">péssimo</span> </p>
+                    <div class="config">
+                        <p>Aceleração: <span class="red">péssima</span> </p>
+                        <p>Curva: <span class="blue">boa</span> </p>
+                        <p>Freio: <span class="red">péssimo</span> </p>
+                    </div>
                 </div>
 
-                <div id="ferrugem" class="blocoCarro">
+                <div id="ferrugem" class="blocoCarro aberto">
                     <p class="nomeCarro"> FERRUGEM </p>
                     <img src="imagens/CarroFerrugemEscolha.png" alt="Carro Trash">
-                    <p>Aceleração: <span class="blue">boa</span> </p>
-                    <p>Curva: <span class="blue">ótima</span> </p>
-                    <p>Freio: <span class="red">péssimo</span> </p>
+                    <div class="config">
+                        <p>Aceleração: <span class="blue">boa</span> </p>
+                        <p>Curva: <span class="blue">ótima</span> </p>
+                        <p>Freio: <span class="red">péssimo</span> </p>
+                    </div>
                 </div>
 
-                <div id="trash" class="blocoCarro">
+                <div id="trash" class="blocoCarro aberto">
                     <p class="nomeCarro"> TRASH </p>
                     <img src="imagens/CarroTrashEscolha.png" alt="Carro Trash">
-                    <p>Aceleração: <span class="red">péssima</span> </p>
-                    <p>Curva: <span class="blue">ótima</span> </p>
-                    <p>Freio: <span class="blue">bom</span> </p>
+                    <div class="config">
+                        <p>Aceleração: <span class="red">péssima</span> </p>
+                        <p>Curva: <span class="blue">ótima</span> </p>
+                        <p>Freio: <span class="blue">bom</span> </p>
+                    </div>
                 </div>
 
-                <div id="dourado" class="blocoCarro">
+                <div id="dourado" class="blocoCarro aberto">
                     <p class="nomeCarro"> DOURADO </p>
                     <img src="imagens/CarroOuroEscolha.png" alt="Carro Trash">
-                    <p>Aceleração: <span class="blue">boa</span> </p>
-                    <p>Curva: <span class="blue">boa</span> </p>
-                    <p>Freio: <span class="blue">boa</span> </p>
+                    <div class="config">
+                        <p>Aceleração: <span class="blue">boa</span> </p>
+                        <p>Curva: <span class="blue">boa</span> </p>
+                        <p>Freio: <span class="blue">boa</span> </p>
+                    </div>
                 </div>
 
-                <div id="sombra" class="blocoCarro">
+                <div id="sombra" onmouseover="exibirBloqueio(350, this.id)" class="blocoCarro bloqueado">
                     <p class="nomeCarro"> SOMBRA </p>
                     <img src="imagens/CarroPretoEscolha.png" alt="Carro Trash">
-                    <p>Aceleração: <span class="blue">ótima</span> </p>
-                    <p>Curva: <span class="blue">ótima</span> </p>
-                    <p>Freio: <span class="blue">ótimo</span> </p>
+                    <div class="config">
+                        <p>Aceleração: <span class="blue">ótima</span> </p>
+                        <p>Curva: <span class="blue">ótima</span> </p>
+                        <p>Freio: <span class="blue">ótimo</span> </p>
+                    </div>
                 </div>
 
-                <div id="oceano" class="blocoCarro">
+                <div id="oceano" onmouseover="exibirBloqueio(350, this.id)" class="blocoCarro bloqueado">
                     <p class="nomeCarro"> OCEANO </p>
                     <img src="imagens/CarroAzulEscolha.png" alt="Carro Trash">
-                    <p>Aceleração: <span class="blue">boa</span> </p>
-                    <p>Curva: <span class="green">excelente</span> </p>
-                    <p>Freio: <span class="blue">bom</span> </p>
+                    <div class="config">
+                        <p>Aceleração: <span class="blue">boa</span> </p>
+                        <p>Curva: <span class="green">excelente</span> </p>
+                        <p>Freio: <span class="blue">bom</span> </p>
+                    </div>
                 </div>
 
-                <div id="nitro" class="blocoCarro">
+                <div id="nitro" onmouseover="exibirBloqueio(350, this.id)" class="blocoCarro bloqueado">
                     <p class="nomeCarro"> NITRO </p>
                     <img src="imagens/CarroRoxoEscolha.png" alt="Carro Trash">
-                    <p>Aceleração: <span class="green">impressionante</span> </p>
-                    <p>Curva: <span class="blue">boa</span> </p>
-                    <p>Freio: <span class="blue">ótimo</span> </p>
+                    <div class="config">
+                        <p>Aceleração: <span class="green">impressionante</span> </p>
+                        <p>Curva: <span class="blue">boa</span> </p>
+                        <p>Freio: <span class="blue">ótimo</span> </p>
+                    </div>
                 </div>
 
-                <div id="raiz" class="blocoCarro">
+                <div id="raiz" onmouseover="exibirBloqueio(350, this.id)" class="blocoCarro bloqueado">
                     <p class="nomeCarro"> RAIZ </p>
                     <img src="imagens/CarroVerdeEscolha.png" alt="Carro Trash">
-                    <p>Aceleração: <span class="blue">boa</span> </p>
-                    <p>Curva: <span class="blue">ótima</span> </p>
-                    <p>Freio: <span class="green">excelente</span> </p>
+                    <div class="config">
+                        <p>Aceleração: <span class="blue">boa</span> </p>
+                        <p>Curva: <span class="blue">ótima</span> </p>
+                        <p>Freio: <span class="green">excelente</span> </p>
+                    </div>
                 </div>
 
-                <div id="escarlate" class="blocoCarro">
+                <div id="escarlate" onmouseover="exibirBloqueio(1000, this.id)" class="blocoCarro bloqueado">
                     <p class="nomeCarro"> ESCARLATE </p>
                     <img src="imagens/CarroVermelhoEscolha.png" alt="Carro Trash">
-                    <p>Aceleração: <span class="green">impressionante</span> </p>
-                    <p>Curva: <span class="green">impressionante</span> </p>
-                    <p>Freio: <span class="green">impressionante</span> </p>
+                    <div class="config">
+                        <p>Aceleração: <span class="green">impressionante</span> </p>
+                        <p>Curva: <span class="green">impressionante</span> </p>
+                        <p>Freio: <span class="green">impressionante</span> </p>
+                    </div>
                 </div>
 
-                <div id="ssp" class="blocoCarro">
+                <div id="ssp" onmouseover="exibirBloqueio(2000, this.id)" class="blocoCarro bloqueado">
                     <p class="nomeCarro"> SSP </p>
                     <img src="imagens/CarroPolicialEscolha.png" alt="Carro Trash">
-                    <p>Aceleração: <span class="golden">excepcional</span> </p>
-                    <p>Curva: <span class="golden">excepcional</span> </p>
-                    <p>Freio: <span class="golden">excepcional</span> </p>
+                    <div class="config">
+                        <p>Aceleração: <span class="gold">excepcional</span> </p>
+                        <p>Curva: <span class="gold">excepcional</span> </p>
+                        <p>Freio: <span class="gold">excepcional</span> </p>
+                    </div>
                 </div>
+                <!--
+                <div class="des">
+                    <p>Desbloqueia com</p>
+                    <p>2000 pontos</p>    
+                </div>-->
                 
             </div>
-
-            
+  
         </div>
-    
-        
 
     </main>
-
-    
 
 </body>
 
 <script src="index.js"></script>
 <script src="gameFunction.js"></script>
 <script src="carGame.js"></script>
+<script src="controladorDeNiveis.js"></script>
 <script src="niveis.js"></script>
 
 </html>

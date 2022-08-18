@@ -1,7 +1,19 @@
 //FUnções da Tela
 
 //Ajusta o carro escolhido pelo jogador
-function escolherCarro( nomeDoCarro , a, f, c ){
+function escolherCarro( nomeDoCarro , a, f, c, p ){
+
+    if( pontosRecorde < p){
+        if(p == 350){
+            msgBloqueio.src = "imagens/desbloqueio350.png"
+        }else if(p == 1000){
+            msgBloqueio.src = "imagens/desbloqueio1000.png"
+        }else{
+            msgBloqueio.src = "imagens/desbloqueio2000.png"
+        }
+        document.getElementById( nomeDoCarro ).appendChild(msgBloqueio);
+        return
+    }
 
     //Som de ligar o motor
     somLigando.currentTime=0;
@@ -53,6 +65,24 @@ function escolherCarro( nomeDoCarro , a, f, c ){
     document.getElementById(nomeDoCarro).style.backgroundColor = "aliceblue"
     //Ativa botão de inicio de Jogo
     iniciar.style.display = "block"
+}
+
+function exibirBloqueio(p , nomeDoCarro){
+    
+    if( pontosRecorde < p){
+        if(p == 350){
+            msgBloqueio.src = "imagens/desbloqueio350.png"
+        }else if(p == 1000){
+            msgBloqueio.src = "imagens/desbloqueio1000.png"
+        }else{
+            msgBloqueio.src = "imagens/desbloqueio2000.png"
+        }
+        document.getElementById( nomeDoCarro ).appendChild(msgBloqueio);
+        return
+    }else{
+        document.getElementById(nomeDoCarro).classList.remove("bloqueado");
+        document.getElementById(nomeDoCarro).classList.add("aberto");
+    }
 }
 
 //Abre a tela de jogo
@@ -111,7 +141,7 @@ function limparJogo(){
     nivel = 1
     mudaNivel = 100
     fimDeJogo = false
-    reset = false
+    reset = true
 }
 
 //Opção Temporaria (Continua do jeito que parou)
@@ -162,3 +192,11 @@ window.onload = function() {
     canvaA.drawImage(imgA, 0, 0);
 
   };
+
+function fechar(){
+    telaComoJogar.style.display = "none"
+}
+
+function abrir(){
+    telaComoJogar.style.display = "flex"
+}

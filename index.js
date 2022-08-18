@@ -4,6 +4,7 @@
 const telaDoJogo = document.getElementById('telaDoJogo')
 const telaInicial = document.getElementById('telaInicial')
 const TelaDeBatida = document.getElementById('TelaDeBatida')
+const telaComoJogar = document.getElementById('telaComoJogar')
 const controleDeNiveis = document.getElementById('controleDeNiveis')
 const nivelAtual = document.getElementById('nivelAtual')
 const nomeNivel = document.getElementById('nomeNivel')
@@ -37,6 +38,14 @@ const nitro = document.getElementById('nitro')
 const raiz = document.getElementById('raiz')
 const escarlate = document.getElementById('escarlate')
 const ssp = document.getElementById('ssp')
+
+const msgBloqueio = document.createElement("IMG");
+msgBloqueio.style.position = "absolute"
+msgBloqueio.style.marginTop = "-150px"
+msgBloqueio.style.marginLeft = "-88px"
+msgBloqueio.style.width = "175px"
+msgBloqueio.style.height = "59px"
+msgBloqueio.src = "imagens/acel.png"
 
 //Variáveis do Jogo-----------------------
 //Carro do Jogador
@@ -80,16 +89,16 @@ var imagensCarros = ["imagens/outroCarroAmarelo.png", "imagens/outroCarroAzul.pn
 
 function escutadores(){
 
-    broken.addEventListener('click', function(){ escolherCarro("broken", 0, 0, 1) } )
-    ferrugem.addEventListener('click', function(){ escolherCarro("ferrugem", 1, 0, 2 ) } )
-    trash.addEventListener('click', function(){ escolherCarro("trash", 0, 1, 2) } )
-    dourado.addEventListener('click', function(){ escolherCarro("dourado", 1, 1, 1) } )
-    sombra.addEventListener('click', function(){ escolherCarro("sombra", 2, 2, 2) } )
-    oceano.addEventListener('click', function(){ escolherCarro("oceano", 1, 1, 3) } )
-    nitro.addEventListener('click', function(){ escolherCarro("nitro", 4, 2, 1) } )
-    raiz.addEventListener('click', function(){ escolherCarro("raiz", 1, 3, 2) } )
-    escarlate.addEventListener('click', function(){ escolherCarro("escarlate", 4, 4, 4) } )
-    ssp.addEventListener('click', function(){ escolherCarro("ssp", 5, 5 ,5) } )
+    broken.addEventListener('click', function(){ escolherCarro("broken", 0, 0, 1, 0) } )
+    ferrugem.addEventListener('click', function(){ escolherCarro("ferrugem", 1, 0, 2, 0 ) } )
+    trash.addEventListener('click', function(){ escolherCarro("trash", 0, 1, 2, 0) } )
+    dourado.addEventListener('click', function(){ escolherCarro("dourado", 1, 1, 1, 0) } )
+    sombra.addEventListener('click', function(){ escolherCarro("sombra", 2, 2, 2, 350) } )
+    oceano.addEventListener('click', function(){ escolherCarro("oceano", 1, 1, 3, 350) } )
+    nitro.addEventListener('click', function(){ escolherCarro("nitro", 4, 2, 1, 350) } )
+    raiz.addEventListener('click', function(){ escolherCarro("raiz", 1, 3, 2, 350) } )
+    escarlate.addEventListener('click', function(){ escolherCarro("escarlate", 4, 4, 4, 1000) } )
+    ssp.addEventListener('click', function(){ escolherCarro("ssp", 5, 5 ,5, 2000) } )
 
     window.addEventListener('keydown', pressionarTecla )
     window.addEventListener('keyup', soltarTecla )
