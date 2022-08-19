@@ -45,7 +45,7 @@ msgBloqueio.style.marginTop = "-150px"
 msgBloqueio.style.marginLeft = "-88px"
 msgBloqueio.style.width = "175px"
 msgBloqueio.style.height = "59px"
-msgBloqueio.src = "imagens/acel.png"
+msgBloqueio.src = "imagens/Desbloqueio350.png"
 
 //Variáveis do Jogo-----------------------
 //Carro do Jogador
@@ -62,7 +62,7 @@ var mudaNivel = 0;
 var pontuacao;
 var pontos = 0;
 var pontosDeEntrada = 0
-var pontosRecorde = 1000;
+var pontosRecorde = 0;
 //Cenário
 var fundo;
 var velPista = 10;
