@@ -183,17 +183,22 @@ function buzinar(){
 window.onload = function() {
     var canvaD = canvaDireita.getContext("2d");
     var canvaE = canvaEsquerda.getContext("2d");
-    var canvaF = canvaFreio.getContext("2d");
-    var canvaA = canvaAcelerador.getContext("2d");
+    var canvaFD = canvaFreioD.getContext("2d");
+    var canvaFE = canvaFreioE.getContext("2d");
+    var canvaAD = canvaAceleradorD.getContext("2d");
+    var canvaAE = canvaAceleradorE.getContext("2d");
     var imgD = document.getElementById("setaDireita");
     var imgE = document.getElementById("setaEsquerda");
     var imgF = document.getElementById("freio");
     var imgA = document.getElementById("acelerador");
+    
 
     canvaD.drawImage(imgD, 0, 0);
     canvaE.drawImage(imgE, 0, 0);
-    canvaF.drawImage(imgF, 0, 0);
-    canvaA.drawImage(imgA, 0, 0);
+    canvaFD.drawImage(imgF, 0, 0);
+    canvaAD.drawImage(imgA, 0, 0);
+    canvaFE.drawImage(imgF, 0, 0);
+    canvaAE.drawImage(imgA, 0, 0);
 
   };
 

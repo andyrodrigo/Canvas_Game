@@ -109,7 +109,7 @@ canvas {
     padding-top: 0;
 }
 
-#canvaAcelerador{
+.canvaAcelerador{
     padding: 0px 0px 0px 11px; /* cima direita abaixo esquerda*/
 }
 

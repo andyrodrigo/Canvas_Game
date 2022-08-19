@@ -25,8 +25,10 @@ const pause = document.getElementById('pause')
 
 const canvaDireita = document.getElementById('canvaDireita')
 const canvaEsquerda = document.getElementById('canvaEsquerda')
-const canvaFreio = document.getElementById('canvaFreio')
-const canvaAcelerador = document.getElementById('canvaAcelerador')
+const canvaFreioD = document.getElementById('canvaFreioD')
+const canvaFreioE = document.getElementById('canvaFreioE')
+const canvaAceleradorD = document.getElementById('canvaAceleradorD')
+const canvaAceleradorE = document.getElementById('canvaAceleradorE')
 
 const broken = document.getElementById('broken')
 const ferrugem = document.getElementById('ferrugem')
@@ -104,8 +106,8 @@ function escutadores(){
 
     window.addEventListener('keydown', pressionarTecla )
     window.addEventListener('keyup', soltarTecla )
-    pause.addEventListener('click', pausar )
-    buzina.addEventListener('click', buzinar )
+    //pause.addEventListener('click', pausar )
+    //buzina.addEventListener('click', buzinar )
 
     iniciar.addEventListener('click', iniciarJogo )
     reiniciar.addEventListener('click', reiniciarJogo )
