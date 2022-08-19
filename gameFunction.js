@@ -72,11 +72,11 @@ function exibirBloqueio(p , nomeDoCarro){
     let carroSelecionado = document.getElementById( nomeDoCarro )
     if( pontosRecorde < p){
         if(p == 350){
-            msgBloqueio.src = "imagens/desbloqueio350.png"
+            msgBloqueio.src = "imagens/Desbloqueio350.png"
         }else if(p == 1000){
-            msgBloqueio.src = "imagens/desbloqueio1000.png"
+            msgBloqueio.src = "imagens/Desbloqueio1000.png"
         }else{
-            msgBloqueio.src = "imagens/desbloqueio2000.png"
+            msgBloqueio.src = "imagens/Desbloqueio2000.png"
         }
         carroSelecionado.appendChild(msgBloqueio);
         return
