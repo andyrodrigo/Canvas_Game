@@ -2,6 +2,8 @@
 
 <img src="/imagens/Car_Game.png"/>
 
+## Deploy: https://andyrodrigo.github.io/Car_Game/
+
 ## Sobre o Projeto:
 
 > Este projeto é um jogo de carros criado inteiramente dentro do elemento Canvas de JavaScript. Basicamente, você precisa desviar dos outros veículos da pista
