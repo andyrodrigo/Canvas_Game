@@ -58,17 +58,18 @@ let curva = 1;
 var veiculos = ["broken", "ferrugem", "trash", "dourado", "sombra", "oceano", "nitro", "raiz", "escarlate", "ssp"]
 //Niveis e Pontos
 var nivel = 1;
-var mudaNivel = 100;
+var mudaNivel = 0;
 var pontuacao;
 var pontos = 0;
-var pontosRecorde = 0;
+var pontosDeEntrada = 0
+var pontosRecorde = 1000;
 //Cenário
 var fundo;
 var velPista = 10;
 var reset = true
 var pausa = false
 var fimDeJogo = false
-var intervalo = 40;
+var intervalo = 50;
 //Sons
 var somColisao;
 var somBuzina;
@@ -78,8 +79,9 @@ var somSirenes = new Audio("audio/sirenes.mp3")
 //Veiculos da Pista
 var obstaculos = [];
 let movimento = 1;
-var veloCarros = 1;
+var veloCarros = 4;
 var desvios = false
+let carroFantasma;
 var imagensCarros = ["imagens/outroCarroAmarelo.png", "imagens/outroCarroAzul.png",
                     "imagens/outroCarroBranco.png", "imagens/outroCarroCinza.png", "imagens/outroCarroMarrom.png",
                     "imagens/outroCarroPreto.png", "imagens/outroCarroRosa.png", "imagens/outroCarroRoxo.png",

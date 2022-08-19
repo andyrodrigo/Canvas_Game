@@ -141,7 +141,6 @@ function atualizaAreaDoJogo() {
     if( pontos == mudaNivel){       
         nivel += 1;
         reset = true
-        //console.log("Nível: " + nivel)
     }
     //desenha texto com pontuação
     pontuacao.text = "PONTOS: " + pontos;
@@ -250,39 +249,6 @@ function soltarBotao( dir ){
 
 }
 
-
-/*
-function controles(){
-    if (areaDoJogo.keys && areaDoJogo.keys['ArrowLeft'] && personagem.x > 0  ||
-        areaDoJogo.keys && areaDoJogo.keys['KeyA'] && personagem.x > 0  ) {     
-         personagem.velocidadeX = -curva;
-         //console.log( personagem.velocidadeX )
-         //personagem.image.src = "car2.png" 
-     }
-     if (areaDoJogo.keys && areaDoJogo.keys['ArrowRight'] && personagem.x < 270
-        || direita.onclick ) {
-        personagem.velocidadeX = curva;
-        //console.log(personagem.x)
-    }
-     if (areaDoJogo.keys && areaDoJogo.keys['ArrowUp']    && personagem.y > 0) { 
-         if( aceleracao == 0 && personagem.y > 450){
-             if( areaDoJogo.frameNo % 5 == 0)
-             personagem.velocidadeY = -1;
-         }else{
-             personagem.velocidadeY = -aceleracao;
-         }
-         
-     }
-     if (areaDoJogo.keys && areaDoJogo.keys['ArrowDown']  && personagem.y < 485 ) {
-         if( freio == 0 && personagem.y < 450){
-             if( areaDoJogo.frameNo % 5 == 0)
-             personagem.velocidadeY = 1;
-         }else{
-             personagem.velocidadeY = freio;
-         }    
-     }
-}*/
-
 function moveCarro(i){
     movimento = Math.floor( Math.random()*3) - 1
     if( areaDoJogo.frameNo % 50 == 0){
@@ -299,48 +265,3 @@ function everyinterval(n) {
     if ((areaDoJogo.frameNo / n) % 1 == 0) {return true;}
     return false;
 }
-
-function moveAcima() {
-    //alert("ok")
-    if( aceleracao == 0 && personagem.y > 450){
-        if( areaDoJogo.frameNo % 5 == 0)
-        personagem.velocidadeY = -1;
-    }else{
-        personagem.velocidadeY = -aceleracao;
-    }
-    personagem.newPos();
-   // console.log( personagem.velocidadeY )
-}
-  
-function moveAbaixo() {
-    //alert("ok")
-    if( freio == 0 && personagem.y < 450){
-        if( areaDoJogo.frameNo % 5 == 0)
-        personagem.velocidadeY = 1;
-    }else{
-        personagem.velocidadeY = freio;
-    }
-    //console.log( "pressionado" )
-    personagem.newPos();
-}
-
-function moveEsquerda() {
-    //alert("ok")
-    personagem.velocidadeX = -curva;
-    personagem.newPos();
-    //personagem.image.src = "imagens/carroBroken.png"
-    //console.log( personagem.velocidadeX )
-}
-
-function moveDireita() {
-    //alert("ok")
-    personagem.velocidadeX = curva;
-    personagem.newPos();
-    //console.log( personagem.x )
-}
-
-function paraMovimento() {
-    obstaculos[0].velocidadeX = 0;
-    obstaculos[0].velocidadeY = 0;
-}
-

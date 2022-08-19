@@ -182,17 +182,23 @@ function nivel_policia(){
 }
 
 //Carros Perseguidores
-function nivel_loucos(){
+function nivel_loucos(fantasma){
 
   if (areaDoJogo.frameNo == 1 || everyinterval( intervalo )) {
 
-    minWidth = 10;
-    maxWidth = 260;
-
-    width = Math.floor(Math.random()*(maxWidth-minWidth+1)+minWidth);
-
-    let carroAleatorio = imagensCarros[ Math.floor(Math.random()*10) ] ;
-    obstaculos.push( new component(30, 30, carroAleatorio , width, -30, "image") );
+    if(desvios){
+      if(fantasma){
+        obstaculos.push( new component(30, 30, "imagens/carroPreto.png" , 135, -30, "image") );
+        carroFantasma = false
+      }
+    }else{
+      minWidth = 10;
+      maxWidth = 260;
+      width = Math.floor(Math.random()*(maxWidth-minWidth+1)+minWidth);
+      let carroAleatorio = imagensCarros[ Math.floor(Math.random()*10) ] ;
+      obstaculos.push( new component(30, 30, carroAleatorio , width, -30, "image") );
+    }
+    
   }
 
   for (i = 0; i < obstaculos.length; i += 1) {
@@ -204,16 +210,19 @@ function nivel_loucos(){
     }else{
       obstaculos[i].x += 0;
     }
-    obstaculos[i].y += veloCarros; 
-
+    
     if(desvios){
       if( personagem.y > obstaculos[i].y){
-        obstaculos[i].y += veloCarros;     
+        obstaculos[i].y += veloCarros;
+        console.log("descer")
       }else if( personagem.y < obstaculos[i].y){
         obstaculos[i].y -= veloCarros;
+        console.log("subir")
       }else{
         obstaculos[i].y += 0;
       }
+    }else{
+      obstaculos[i].y += veloCarros; 
     }
 
     obstaculos[i].newPos();

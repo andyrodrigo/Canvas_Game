@@ -67,8 +67,9 @@ function escolherCarro( nomeDoCarro , a, f, c, p ){
     iniciar.style.display = "block"
 }
 
+//Mostra que carros estão bloqueados ou desbloqueia carros
 function exibirBloqueio(p , nomeDoCarro){
-    
+    let carroSelecionado = document.getElementById( nomeDoCarro )
     if( pontosRecorde < p){
         if(p == 350){
             msgBloqueio.src = "imagens/desbloqueio350.png"
@@ -77,11 +78,14 @@ function exibirBloqueio(p , nomeDoCarro){
         }else{
             msgBloqueio.src = "imagens/desbloqueio2000.png"
         }
-        document.getElementById( nomeDoCarro ).appendChild(msgBloqueio);
+        carroSelecionado.appendChild(msgBloqueio);
         return
     }else{
-        document.getElementById(nomeDoCarro).classList.remove("bloqueado");
-        document.getElementById(nomeDoCarro).classList.add("aberto");
+        carroSelecionado.classList.remove("bloqueado");
+        carroSelecionado.classList.add("aberto");   
+        if( carroSelecionado.contains(msgBloqueio) ){
+            carroSelecionado.removeChild(msgBloqueio);
+        }
     }
 }
 

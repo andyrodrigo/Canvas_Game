@@ -12,9 +12,10 @@ e níveis que vão mudando os tipos de veículos, a velocidade deles em tela, a 
 
 ## Descrição do projeto:
 
-> O projeto possui 2 telas:
+> O projeto possui 3 telas:
 > - A tela inicial de seleção de carros
 > - A tela de jogo dentro do canvas
+> - A tela de Instruções sobre o jogo
 
 > ### Tela Inicial:
 > O usuário pode escolher entre 10 veículos com diferentes configurações, elas são:
@@ -66,12 +67,12 @@ e níveis que vão mudando os tipos de veículos, a velocidade deles em tela, a 
 * [x] Opção de controles na tela e nas teclas: a w s d
 * [X] Pontuação Recorde
 * [X] Mostrador de Nível
-* [ ] Desbloqueio de novos veículos
+* [X] Desbloqueio de novos veículos
 * [X] Níveis diversificados
 * [ ] Diferentes Modos de Jogo
 * [ ] Carro Customizado
 * [ ] Opção Full Screen
-* [ ] Instruções
+* [X] Instruções
 * [ ] Melhoria de Layout
 * [X] Botão de Pausa
 * [X] Buzina e Sirene
