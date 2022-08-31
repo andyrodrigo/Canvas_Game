@@ -1,6 +1,5 @@
 //Funções dentro do Jogo
 
-
 var areaDoJogo = {
 
     canvas: document.createElement("canvas"),
@@ -103,6 +102,7 @@ function component( width, height, objeto, x, y, type) {
 
 //Redesenha a tela a cada frame
 function atualizaAreaDoJogo() {
+
     //Verifica possível Colisão
     for (i = 0; i < obstaculos.length; i += 1) {
         if (personagem.colisaoCom(obstaculos[i])) {
@@ -111,10 +111,7 @@ function atualizaAreaDoJogo() {
           areaDoJogo.stop();
           somDirigindo.pause();
           TelaDeBatida.style.display = "flex"
-          if( pontos > pontosRecorde){
-            pontosRecorde = pontos
-            recorde.innerText = pontos;
-          }
+          gravarRecorde();
           return;
         }
     }
@@ -149,6 +146,15 @@ function atualizaAreaDoJogo() {
     personagem.newPos();
     personagem.update();
 
+}
+
+//Grava recorde na memoria
+function gravarRecorde(){
+    if( pontos > pontosRecorde){
+        pontosRecorde = pontos
+        recorde.innerText = pontos;
+        localStorage.setItem('recordeGravado', JSON.stringify(pontos) )
+    }
 }
 
 function controles(){

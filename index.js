@@ -64,7 +64,7 @@ var mudaNivel = 0;
 var pontuacao;
 var pontos = 0;
 var pontosDeEntrada = 0
-var pontosRecorde = 0;
+var pontosRecorde;
 //Cenário
 var fundo;
 var velPista = 10;
@@ -88,6 +88,18 @@ var imagensCarros = ["imagens/outroCarroAmarelo.png", "imagens/outroCarroAzul.pn
                     "imagens/outroCarroBranco.png", "imagens/outroCarroCinza.png", "imagens/outroCarroMarrom.png",
                     "imagens/outroCarroPreto.png", "imagens/outroCarroRosa.png", "imagens/outroCarroRoxo.png",
                     "imagens/outroCarroVerde.png", "imagens/outroCarroVermelho.png" ]
+
+function trazRecorde(){
+    let recordeGravado = localStorage.getItem('recordeGravado');
+    let recordeAntigo = JSON.parse( recordeGravado )
+    if(recordeAntigo){
+        pontosRecorde = recordeAntigo;
+    }else{
+        pontosRecorde = 0;
+    }
+    this.showTasks = this.tasks
+    recorde.innerText = pontosRecorde;
+}
 
 //Escutadores---------------------------------------------------------------------------
 
@@ -119,3 +131,4 @@ function escutadores(){
 
 //inicialização
 window.addEventListener("load", escutadores) //Ativa os escutadores
+window.addEventListener("load", trazRecorde) //Ativa os escutadores
