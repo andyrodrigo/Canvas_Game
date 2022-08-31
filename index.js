@@ -15,6 +15,7 @@ const recorde = document.getElementById("recorde")
 const iniciar = document.getElementById('iniciar')
 const reiniciar = document.getElementById('reiniciar')
 const retomar = document.getElementById('retomar')
+const retomarNivel = document.getElementById('retomarNivel')
 const outro = document.getElementById('outro')
 
 const esquerda = document.getElementById('esquerda')
@@ -124,6 +125,7 @@ function escutadores(){
     iniciar.addEventListener('click', iniciarJogo )
     reiniciar.addEventListener('click', reiniciarJogo )
     retomar.addEventListener('click', retomarJogo )
+    retomarNivel.addEventListener('click', recomecarNivel )
     outro.addEventListener('click', voltar )
 }
 

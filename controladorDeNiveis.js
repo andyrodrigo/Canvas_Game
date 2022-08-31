@@ -140,13 +140,14 @@ function niveis(){
   }
 
 //Configura o nível
-function configurarNivel( nomeDoNivel, desviar, i, vc, mn ){
+function configurarNivel( nomeDoNivel, desviar, i, vc, pontosParaMudarNivel ){
   pontosDeEntrada = pontos
   nivelAtual.innerText = nivelAtual.innerText = "NIVEL " + nivel + " - "
   nomeNivel.innerText = nomeDoNivel
   desvios = desviar
   intervalo = i
   veloCarros = vc;
-  mudaNivel += mn
+  mudaNivel += pontosParaMudarNivel
+  console.log("mudaNivel: " + mudaNivel)
   reset = false
 }

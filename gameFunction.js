@@ -155,6 +155,17 @@ function retomarJogo() {
     iniciarJogo()
 }
 
+//Reinicia, mas do nível onde parou
+function recomecarNivel(){
+    TelaDeBatida.style.display = "none"
+    obstaculos = [];
+    mudaNivel = 0
+    pontos = pontosDeEntrada;
+    fimDeJogo = false
+    reset = true
+    iniciarJogo()
+}
+
 //PausaJogo
 function pausar(){
     if(!fimDeJogo){
