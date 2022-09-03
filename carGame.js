@@ -195,6 +195,9 @@ function controles(){
                 personagem.velocidadeY = freio;
             }    
         }
+        if (areaDoJogo.keys['Space']){
+            buzinar()
+        }
     }
     if ( areaDoJogo.teclas ){
         //console.log("on")
@@ -244,15 +247,19 @@ function soltarTecla(e){
 }
 
 function pressionarBotao( dir ){
-    //console.log( dir )
     areaDoJogo.teclas = (areaDoJogo.teclas || []);
     areaDoJogo.teclas[dir] = true;
 }
 
 function soltarBotao( dir ){
-    //console.log( dir)
     areaDoJogo.teclas[dir] = false;
 
+}
+
+function pressionarEnter(e){    
+    if (e.code =='Enter'){
+        pausar();
+    }
 }
 
 function moveCarro(i){

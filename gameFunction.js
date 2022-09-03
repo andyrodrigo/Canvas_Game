@@ -160,7 +160,8 @@ function recomecarNivel(){
     TelaDeBatida.style.display = "none"
     obstaculos = [];
     mudaNivel = 0
-    pontos = pontosDeEntrada;
+    pontos = 0
+    pontosDeEntrada =0;
     fimDeJogo = false
     reset = true
     iniciarJogo()
@@ -169,7 +170,7 @@ function recomecarNivel(){
 //PausaJogo
 function pausar(){
     if(!fimDeJogo){
-        if(pausa){
+        if(pausa){     
             areaDoJogo.continue();
             somDirigindo.play();
             pausa = false

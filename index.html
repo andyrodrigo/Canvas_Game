@@ -28,6 +28,8 @@
             <div > <p>ACELERAR: <span class="exp">Seta para <strong>cima</strong> do teclado ou tecla W ou o botão de acelerador na tela.</span> </p></div>
             <div > <p>FREIAR: <span class="exp">Seta para baixo do teclado ou tecla S ou o botão de freio na tela.</span> </p> </div>
             <div > <p>MOVER-SE: <span class="exp">Setas para os lados do teclado ou teclas A e D ou o botões de direção na tela.</span> </p> </div>
+            <div > <p>BUZINAR: <span class="exp">Tecla de Espaço do teclado ou o botão de buzina na tela.</span> </p> </div>
+            <div > <p>PAUSAR: <span class="exp">Tecla Enter do teclado ou o botão de pausa na tela.</span> </p> </div>
             <br>
             <p class="golden">NOVOS CARROS:</p>
             <br>
@@ -42,12 +44,16 @@
             <p class="golden">EXTRA:</p>
             <br>
             <p>Existe a opção de RETOMAR ao bater o veículo!</p>
-            <p>Esta opção só existe para que você conheça os níveis seguintes, caso colida demais.</p>
+            <p>Esta opção só existe para que você tentar retomar a partida de onde parou sem perder seus pontos, caso colida demais.</p>
             <p>Entretanto, é uma opção temporária e ela posiciona o carro no meio novamente, ou seja...</p>
             <p> se tiver um outro carro no centro, ele vai colidir infinitamente e você precisará reiniciar de qualquer forma.</p>
             <p> Mas vale a tentativa retomar a estrada e não perder seus pontos e progresso.</p>
             <p> Ela também pode gerar um Bug de criar um carro num local que não deveria, alterando o jogo</p>
             <p> em algum momemento impróprio, deixando impossível passar por algum obstáculo, mas é sorte. </p>
+            <br>
+            <p>Existe também opção de RETOMAR NIVEL ao bater o veículo!</p>
+            <p>Esta opção existe para que você continue do nível onde parou! Entretanto, seus pontos zeram novamente. </p>
+            <p>Ela serve para que você conheça os níveis seguintes ou se mantenha jogando em algum deles</p>
 
         </div>
         
@@ -113,11 +119,8 @@
                     <div>
                         <button  id="pause" class="Bcontrole" onclick="pausar()" ontouchstart="pausar()">pausa</button>
                     </div>                  
-                </div >
-
-    
+                </div >  
             </div>
-
         </section>
 
         <div id="telaInicial" >
@@ -233,19 +236,10 @@
                         <p>Curva: <span class="gold">excepcional</span> </p>
                         <p>Freio: <span class="gold">excepcional</span> </p>
                     </div>
-                </div>
-                <!--
-                <div class="des">
-                    <p>Desbloqueia com</p>
-                    <p>2000 pontos</p>    
-                </div>-->
-                
+                </div>             
             </div>
-  
         </div>
-
     </main>
-
 </body>
 
 <script src="index.js"></script>

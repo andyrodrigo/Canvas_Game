@@ -50,6 +50,8 @@ msgBloqueio.style.width = "175px"
 msgBloqueio.style.height = "59px"
 msgBloqueio.src = "imagens/Desbloqueio350.png"
 
+let enter
+
 //Variáveis do Jogo-----------------------
 //Carro do Jogador
 var personagem;
@@ -119,6 +121,7 @@ function escutadores(){
 
     window.addEventListener('keydown', pressionarTecla )
     window.addEventListener('keyup', soltarTecla )
+    window.addEventListener('keypress', pressionarEnter )
     //pause.addEventListener('click', pausar )
     //buzina.addEventListener('click', buzinar )
 

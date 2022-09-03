@@ -214,10 +214,8 @@ function nivel_loucos(fantasma){
     if(desvios){
       if( personagem.y > obstaculos[i].y){
         obstaculos[i].y += veloCarros;
-        console.log("descer")
       }else if( personagem.y < obstaculos[i].y){
         obstaculos[i].y -= veloCarros;
-        console.log("subir")
       }else{
         obstaculos[i].y += 0;
       }
